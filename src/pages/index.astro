@@ -1,5 +1,8 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
 ---
 
 <SiteLayout
@@ -16,8 +19,8 @@ import SiteLayout from '../layouts/SiteLayout.astro';
           and support resources. The first release is Ase2UE, an Aseprite-to-Paper2D workflow plugin.
         </p>
         <div class="actions">
-          <a class="button primary" href="/plugins/ase2ue">View Ase2UE</a>
-          <a class="button" href="/docs/ase2ue/getting-started">Read the Docs</a>
+          <a class="button primary" href={url('/plugins/ase2ue')}>View Ase2UE</a>
+          <a class="button" href={url('/docs/ase2ue/getting-started')}>Read the Docs</a>
         </div>
       </div>
       <article class="terminal-card" aria-label="Ase2UE import flow">
@@ -70,4 +73,3 @@ Notes:
     </section>
   </main>
 </SiteLayout>
-

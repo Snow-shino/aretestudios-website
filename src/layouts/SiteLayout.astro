@@ -5,6 +5,9 @@ const {
   title = 'Snocrest Plugins',
   description = 'Unreal Engine plugins, documentation, and buyer support from Snocrest.',
 } = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
 ---
 
 <!doctype html>
@@ -20,14 +23,14 @@ const {
     <header class="topbar">
       <div class="shell topbar-inner">
         <a class="brand" href="/">
-          <img src="/ase2ue-mark.svg" alt="" width="34" height="34" />
+          <img src={url('/ase2ue-mark.svg')} alt="" width="34" height="34" />
           <span>Snocrest Plugins</span>
         </a>
         <nav class="nav" aria-label="Main navigation">
-          <a href="/plugins">Plugins</a>
-          <a href="/plugins/ase2ue">Ase2UE</a>
-          <a href="/docs/ase2ue/getting-started">Docs</a>
-          <a href="/docs/ase2ue/changelog">Changelog</a>
+          <a href={url('/plugins')}>Plugins</a>
+          <a href={url('/plugins/ase2ue')}>Ase2UE</a>
+          <a href={url('/docs/ase2ue/getting-started')}>Docs</a>
+          <a href={url('/docs/ase2ue/changelog')}>Changelog</a>
         </nav>
       </div>
     </header>
@@ -39,4 +42,3 @@ const {
     </footer>
   </body>
 </html>
-

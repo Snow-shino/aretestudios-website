@@ -3,6 +3,7 @@ import starlight from '@astrojs/starlight';
 
 export default defineConfig({
   site: 'https://plugins.snocrest.com',
+  base: process.env.ASTRO_BASE || '/',
   output: 'static',
   integrations: [
     starlight({

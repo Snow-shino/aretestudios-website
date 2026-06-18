@@ -1,5 +1,8 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
 ---
 
 <SiteLayout
@@ -16,9 +19,9 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
           into generated textures, PaperSprites, PaperFlipbooks, and optional sprite sockets.
         </p>
         <div class="actions">
-          <a class="button primary" href="/docs/ase2ue/getting-started">Get Started</a>
-          <a class="button" href="/docs/ase2ue/importing">Importing Guide</a>
-          <a class="button" href="/docs/ase2ue/faq">FAQ</a>
+          <a class="button primary" href={url('/docs/ase2ue/getting-started')}>Get Started</a>
+          <a class="button" href={url('/docs/ase2ue/importing')}>Importing Guide</a>
+          <a class="button" href={url('/docs/ase2ue/faq')}>FAQ</a>
         </div>
       </div>
       <article class="terminal-card">
@@ -74,16 +77,15 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
           <article class="card">
             <h3>Getting Started</h3>
             <p>Install, enable Paper2D, set Aseprite path, and create your first Ase2 Source asset.</p>
-            <p><a href="/docs/ase2ue/getting-started">Open guide</a></p>
+            <p><a href={url('/docs/ase2ue/getting-started')}>Open guide</a></p>
           </article>
           <article class="card">
             <h3>Hitboxes, Hurtboxes & Sockets</h3>
             <p>Use marker layers such as SOCKET_Hand and HIT_WeaponTip for gameplay helper points.</p>
-            <p><a href="/docs/ase2ue/hitboxes-hurtboxes-sockets">Open guide</a></p>
+            <p><a href={url('/docs/ase2ue/hitboxes-hurtboxes-sockets')}>Open guide</a></p>
           </article>
         </div>
       </div>
     </section>
   </main>
 </SiteLayout>
-
