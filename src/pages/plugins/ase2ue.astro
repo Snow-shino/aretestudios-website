@@ -1,0 +1,89 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+---
+
+<SiteLayout
+  title="Ase2UE | Snocrest Plugins"
+  description="Ase2UE imports Aseprite files into Unreal Engine and generates Paper2D textures, sprites, flipbooks, and sprite sockets."
+>
+  <main>
+    <section class="shell hero">
+      <div>
+        <p class="eyebrow">Aseprite to Unreal Engine</p>
+        <h1>Ase2UE</h1>
+        <p class="lead">
+          Ase2UE is an Unreal Engine editor plugin for Paper2D projects. It turns saved Aseprite files
+          into generated textures, PaperSprites, PaperFlipbooks, and optional sprite sockets.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="/docs/ase2ue/getting-started">Get Started</a>
+          <a class="button" href="/docs/ase2ue/importing">Importing Guide</a>
+          <a class="button" href="/docs/ase2ue/faq">FAQ</a>
+        </div>
+      </div>
+      <article class="terminal-card">
+        <div class="terminal-header">
+          <span>ase2ue</span>
+          <span>paper2d workflow</span>
+        </div>
+        <pre class="terminal-body"><code>Aseprite file
+  -> Ase2 Source asset
+  -> Import Now
+  -> T_Player_Sheet
+  -> SP_Player_0000
+  -> FB_Player_Run
+  -> SOCKET_WeaponTip</code></pre>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">What it does</p>
+            <h2>One editor workflow for 2D asset generation.</h2>
+          </div>
+          <p>Ase2UE relies on Aseprite and Paper2D. It is an editor tool, not a runtime importer.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>Generate Paper2D assets</h3>
+            <p>Create textures, sprites, and flipbooks from one saved Aseprite file.</p>
+          </article>
+          <article class="card">
+            <h3>Use marker layers</h3>
+            <p>Turn 1x1 marker pixels into PaperSprite sockets for hands, weapons, and trace points.</p>
+          </article>
+          <article class="card">
+            <h3>Reimport safely</h3>
+            <p>Save in Aseprite, click Import Now again, and update stable generated assets in place.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Docs</p>
+            <h2>Find the workflow you need.</h2>
+          </div>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <h3>Getting Started</h3>
+            <p>Install, enable Paper2D, set Aseprite path, and create your first Ase2 Source asset.</p>
+            <p><a href="/docs/ase2ue/getting-started">Open guide</a></p>
+          </article>
+          <article class="card">
+            <h3>Hitboxes, Hurtboxes & Sockets</h3>
+            <p>Use marker layers such as SOCKET_Hand and HIT_WeaponTip for gameplay helper points.</p>
+            <p><a href="/docs/ase2ue/hitboxes-hurtboxes-sockets">Open guide</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+</SiteLayout>
+

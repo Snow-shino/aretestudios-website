@@ -1,0 +1,73 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+---
+
+<SiteLayout
+  title="Snocrest Plugins"
+  description="Plugin showcase and documentation for Snocrest Unreal Engine tools."
+>
+  <main>
+    <section class="shell hero">
+      <div>
+        <p class="eyebrow">Unreal Engine creator tools</p>
+        <h1>Focused plugins for faster 2D production.</h1>
+        <p class="lead">
+          Snocrest Plugins is the home for practical Unreal Engine tools, buyer documentation,
+          and support resources. The first release is Ase2UE, an Aseprite-to-Paper2D workflow plugin.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="/plugins/ase2ue">View Ase2UE</a>
+          <a class="button" href="/docs/ase2ue/getting-started">Read the Docs</a>
+        </div>
+      </div>
+      <article class="terminal-card" aria-label="Ase2UE import flow">
+        <div class="terminal-header">
+          <span>Ase2UE import report</span>
+          <span>static docs</span>
+        </div>
+        <pre class="terminal-body"><code><span class="accent">Import complete</span>
+
+Texture: T_Player_Sheet
+Sprites: SP_Player_0000...SP_Player_0011
+Flipbooks: FB_Player_Idle, FB_Player_Run
+
+What was done:
+- Imported marker layer SOCKET_Hand
+- Applied PaperSprite sockets
+
+Notes:
+- Generated assets update in place</code></pre>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Plugin showcase</p>
+            <h2>Built for concrete workflows.</h2>
+          </div>
+          <p>
+            Each plugin page explains what the tool does, who it is for, and where to find setup docs,
+            support notes, and changelogs.
+          </p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>Buyer-friendly docs</h3>
+            <p>Simple setup steps, searchable keywords, and troubleshooting written for working creators.</p>
+          </article>
+          <article class="card">
+            <h3>Static and fast</h3>
+            <p>No WordPress and no runtime server. The site builds to static files for DreamHost hosting.</p>
+          </article>
+          <article class="card">
+            <h3>Launch-ready paths</h3>
+            <p>Docs URLs are stable and ready to use in Fab listings, support replies, and videos.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+</SiteLayout>
+

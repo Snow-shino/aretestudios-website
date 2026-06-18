@@ -1,0 +1,104 @@
+---
+title: Importing
+description: Understand Ase2 Source settings, Grid mode, Auto from Aseprite JSON, flipbooks, and reimport behavior.
+---
+
+This page explains the main import settings on an **Ase2 Source** asset.
+
+## Aseprite File
+
+The `.ase` or `.aseprite` file to import.
+
+If the picker does not show your file, switch the picker to all files or paste the full path.
+
+## Import Destination
+
+The Unreal content folder where generated assets are created.
+
+Use a folder under `/Game`.
+
+Good:
+
+```text
+/Game/Sprites/Hero
+```
+
+Not good:
+
+```text
+C:/Art/Hero
+```
+
+## Grid Mode
+
+Grid mode cuts the generated spritesheet into fixed-size cells.
+
+Use Grid when:
+
+- Every frame has the same canvas size.
+- You want predictable sprite bounds.
+- You are importing marker layers for sockets.
+
+Example:
+
+```text
+Sprite Extraction: Grid
+Grid Cell Width: 80
+Grid Cell Height: 80
+```
+
+For socket marker workflows, set the grid cell size to match your Aseprite canvas size.
+
+## Auto From Aseprite JSON
+
+Auto mode reads frame rectangles from Aseprite's exported JSON.
+
+Use Auto when:
+
+- Frames are packed or trimmed.
+- You do not need exact marker-pixel-to-canvas socket placement.
+- You want Aseprite's exported frame data to decide each sprite rectangle.
+
+If socket positions look wrong in Auto mode, switch to Grid mode.
+
+## Pivot Mode
+
+The PaperSprite pivot applied to every generated sprite.
+
+Common choices:
+
+- **Center Center** for characters that rotate or flip around the middle.
+- **Bottom Center** for grounded characters.
+
+## Default Material
+
+The material applied to generated sprites.
+
+The default uses Paper2D's masked lit sprite material. You can change it to an unlit Paper2D material if your project does not use sprite lighting.
+
+## Flipbooks From Tags
+
+If **Create Flipbooks From Tags** is enabled, Ase2UE creates one PaperFlipbook for each Aseprite tag.
+
+Example:
+
+```text
+Idle -> FB_Player_Idle
+Run -> FB_Player_Run
+Attack -> FB_Player_Attack
+```
+
+## Use Aseprite Frame Durations
+
+When enabled, Ase2UE uses the frame timing from Aseprite.
+
+When disabled, Ase2UE uses the **Flipbook Frames Per Second** value on the Ase2 Source asset.
+
+## Import Report
+
+After import, Ase2UE shows a report with:
+
+- **What was done** for successful actions.
+- **Notes** for helpful information that is not a problem.
+- **Warnings** only for things that need attention.
+

@@ -1,0 +1,82 @@
+---
+title: FAQ
+description: Answers to common Ase2UE setup, import, socket, and troubleshooting questions.
+---
+
+## Is Ase2UE a runtime importer?
+
+No. Ase2UE is an editor plugin. It creates and updates Unreal assets inside the editor.
+
+## Does Ase2UE require Paper2D?
+
+Yes. Ase2UE generates Paper2D assets such as PaperSprites and PaperFlipbooks.
+
+## Does Ase2UE require Aseprite?
+
+Yes. Ase2UE uses the local Aseprite command-line exporter.
+
+## The Aseprite executable was not found. What do I do?
+
+Open:
+
+```text
+Project Settings → Plugins → Ase2UE
+```
+
+Set **Aseprite Executable Path** to your local `Aseprite.exe`.
+
+## The file picker does not show my `.aseprite` file.
+
+Switch the file picker to all files or paste the full path into the field.
+
+## My sockets do not appear.
+
+Check:
+
+- **Import Marker Layers** is enabled.
+- The marker layer name starts with `SOCKET`, `HIT`, or `HURT`.
+- The marker pixel is visible.
+- The marker pixel is not transparent.
+- The marker exists on the correct frame.
+- The marker is 1x1 for point-style sockets.
+- Grid mode is used for exact canvas placement.
+
+## My socket position looks offset.
+
+PaperSprite sockets are stored relative to the sprite pivot.
+
+If your Aseprite pixel is `29, 40` on an `80x80` sprite with a centered pivot, the socket transform will not also be `29, 40`. It will be offset from the pivot.
+
+## Flipbooks were not created.
+
+Check:
+
+- **Create Flipbooks From Tags** is enabled.
+- Your Aseprite file has frame tags.
+- The tags have clear names such as `Idle`, `Run`, or `Attack`.
+
+## Marker pixels appear in the generated texture.
+
+Marker layers should be named with supported prefixes:
+
+```text
+SOCKET_Hand
+HIT_WeaponTip
+HURT_Body
+```
+
+Save the Aseprite file and reimport.
+
+## What should I include in a support request?
+
+Include:
+
+- Unreal Engine version
+- Aseprite version
+- Ase2UE version
+- Grid or Auto extraction mode
+- Grid cell size if using Grid
+- Screenshot of Ase2 Source settings
+- Screenshot of Aseprite layers/tags
+- Import report text if there was a warning or error
+

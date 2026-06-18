@@ -1,0 +1,108 @@
+---
+title: Hitboxes, Hurtboxes & Sockets
+description: Use Aseprite marker layers to create PaperSprite sockets and optional Blueprint-readable HIT/HURT data.
+---
+
+Ase2UE can read special marker layers from Aseprite.
+
+Marker layers are hidden from the main generated texture, exported separately, and used as gameplay helper points.
+
+## Supported Marker Layer Names
+
+Use layer names that start with:
+
+```text
+SOCKET
+HIT
+HURT
+```
+
+Examples:
+
+```text
+SOCKET_Hand
+SOCKET_WeaponTip
+HIT_WeaponStart
+HIT_WeaponTip
+HURT_Body
+```
+
+## Create A Sprite Socket
+
+1. Create a new layer in Aseprite.
+2. Name it `SOCKET_Hand` or another supported name.
+3. Place one visible 1x1 pixel where the socket should be.
+4. Save the file.
+5. Click **Import Now** in Unreal.
+
+Ase2UE writes a matching socket onto the generated PaperSprite.
+
+## Does Marker Color Matter?
+
+No.
+
+Ase2UE reads visible non-transparent pixels. Red, green, blue, white, and other colors all work.
+
+What matters:
+
+- The layer name starts with `SOCKET`, `HIT`, or `HURT`.
+- The marker pixel is visible.
+- The marker pixel is not transparent.
+- The marker exists on the correct frame.
+- A 1x1 marker is used for point-style sockets.
+
+## Weapon Trace Example
+
+For a melee weapon trace, create two 1x1 marker layers:
+
+```text
+HIT_WeaponStart
+HIT_WeaponTip
+```
+
+After import, get both socket locations from the PaperSprite or PaperFlipbook component and use them as the trace start and trace end.
+
+## Grid Mode Is Best For Sockets
+
+For exact socket placement, use Grid mode and set the grid cell size to your Aseprite canvas size.
+
+Example for an `80x80` canvas:
+
+```text
+Sprite Extraction: Grid
+Grid Cell Width: 80
+Grid Cell Height: 80
+```
+
+## Why Socket Coordinates Look Different
+
+PaperSprite sockets are stored in pivot-space, not Aseprite canvas coordinates.
+
+For an `80x80` sprite using **Center Center** pivot:
+
+```text
+Aseprite pixel: 29, 40
+Pivot: 40, 40
+PaperSprite socket transform: X=-11, Y=0, Z=0
+```
+
+That is expected.
+
+## Advanced Hitbox Data Asset
+
+The default Ase2UE workflow is socket-first.
+
+If you want Blueprint-readable HIT/HURT/SOCKET data grouped by animation frame, enable:
+
+```text
+Generate Hitbox Data Asset
+```
+
+This creates a data asset named like:
+
+```text
+DA_Player_Hitboxes
+```
+
+Use this only if your project needs custom Blueprint logic that reads imported marker or slice data directly.
+

@@ -1,0 +1,72 @@
+---
+title: Getting Started
+description: Install Ase2UE, enable Paper2D, set the Aseprite path, and import your first Aseprite file.
+---
+
+Ase2UE is an Unreal Engine editor plugin for bringing Aseprite art into Paper2D projects.
+
+It creates generated assets in the editor. It is not a runtime importer.
+
+## Requirements
+
+- Unreal Engine 5 project
+- Paper2D enabled
+- Aseprite installed locally
+- A saved `.ase` or `.aseprite` file
+
+## Enable The Plugin
+
+1. Open your Unreal project.
+2. Open **Edit → Plugins**.
+3. Enable **Paper2D**.
+4. Enable **Ase2UE**.
+5. Restart Unreal if prompted.
+
+## Set The Aseprite Path
+
+Open:
+
+```text
+Project Settings → Plugins → Ase2UE
+```
+
+Set **Aseprite Executable Path** if Ase2UE does not find Aseprite automatically.
+
+Common Windows paths:
+
+```text
+C:/Program Files/Aseprite/Aseprite.exe
+C:/Program Files (x86)/Steam/steamapps/common/Aseprite/Aseprite.exe
+```
+
+## Import Your First File
+
+1. In the Content Browser, create an **Ase2 Source** asset.
+2. Open the **Ase2 Source** asset.
+3. Set **Aseprite File** to your `.ase` or `.aseprite` file.
+4. Set **Import Destination** to a folder under `/Game`.
+5. Choose **Grid** or **Auto from Aseprite JSON**.
+6. Click **Import Now**.
+
+## What Gets Created
+
+For a source file named `Player.aseprite`, Ase2UE creates a folder like this:
+
+```text
+/Game/YourFolder/Player/
+  Textures/T_Player_Sheet
+  Sprites/SP_Player_0000
+  Flipbooks/FB_Player_Idle
+```
+
+The exact assets depend on your source file, tags, and settings.
+
+## Normal Reimport Workflow
+
+1. Edit your file in Aseprite.
+2. Save the file.
+3. Return to Unreal.
+4. Click **Import Now** again.
+
+Ase2UE updates the same generated assets in place.
+

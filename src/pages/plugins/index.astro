@@ -1,0 +1,48 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+---
+
+<SiteLayout
+  title="Plugins | Snocrest Plugins"
+  description="Browse Snocrest Unreal Engine plugins."
+>
+  <main>
+    <section class="shell hero">
+      <div>
+        <p class="eyebrow">Plugins</p>
+        <h1>Unreal Engine tools from Snocrest.</h1>
+        <p class="lead">
+          A small catalog of focused production tools. Each plugin includes documentation,
+          setup steps, and support guidance.
+        </p>
+      </div>
+      <article class="terminal-card">
+        <div class="terminal-header">
+          <span>catalog</span>
+          <span>v1</span>
+        </div>
+        <pre class="terminal-body"><code>available:
+  - Ase2UE
+
+category:
+  - 2D
+  - Paper2D
+  - Aseprite workflow</code></pre>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="plugin-row">
+          <img src="/ase2ue-mark.svg" alt="" width="58" height="58" />
+          <div>
+            <h2>Ase2UE</h2>
+            <p>Import Aseprite files into Unreal Engine and generate Paper2D textures, sprites, flipbooks, and sprite sockets.</p>
+          </div>
+          <a class="button primary" href="/plugins/ase2ue">Open</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</SiteLayout>
+

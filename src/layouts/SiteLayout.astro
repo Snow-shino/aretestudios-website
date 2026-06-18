@@ -1,0 +1,42 @@
+---
+import '../styles/site.css';
+
+const {
+  title = 'Snocrest Plugins',
+  description = 'Unreal Engine plugins, documentation, and buyer support from Snocrest.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#ff7a1a" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="shell topbar-inner">
+        <a class="brand" href="/">
+          <img src="/ase2ue-mark.svg" alt="" width="34" height="34" />
+          <span>Snocrest Plugins</span>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="/plugins">Plugins</a>
+          <a href="/plugins/ase2ue">Ase2UE</a>
+          <a href="/docs/ase2ue/getting-started">Docs</a>
+          <a href="/docs/ase2ue/changelog">Changelog</a>
+        </nav>
+      </div>
+    </header>
+    <slot />
+    <footer class="footer">
+      <div class="shell">
+        <p>Snocrest Plugins. Static documentation and plugin support for Unreal Engine creators.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
