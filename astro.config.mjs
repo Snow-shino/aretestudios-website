@@ -24,6 +24,7 @@ export default defineConfig({
         {
           label: 'Ase2UE',
           items: [
+            { label: 'Overview', slug: 'docs/ase2ue' },
             { label: 'Getting Started', slug: 'docs/ase2ue/getting-started' },
             { label: 'Importing', slug: 'docs/ase2ue/importing' },
             { label: 'Hitboxes, Hurtboxes & Sockets', slug: 'docs/ase2ue/hitboxes-hurtboxes-sockets' },

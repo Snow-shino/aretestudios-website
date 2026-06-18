@@ -191,6 +191,78 @@ h3 {
   color: var(--accent-2);
 }
 
+.docs-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #141414 0%, #0d0d0f 100%);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+}
+
+.docs-panel-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.docs-panel-head img {
+  width: 42px;
+  height: 42px;
+}
+
+.docs-panel-head h2 {
+  margin: 0 0 4px;
+  font-size: 1.32rem;
+}
+
+.docs-panel-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.chapter-list {
+  display: grid;
+}
+
+.chapter-list a {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 8px 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.chapter-list a:last-child {
+  border-bottom: 0;
+}
+
+.chapter-list a:hover {
+  background: #171719;
+}
+
+.chapter-list span {
+  grid-row: span 2;
+  color: var(--accent-2);
+  font: 0.82rem/1.2 "Cascadia Mono", Consolas, monospace;
+}
+
+.chapter-list strong {
+  min-width: 0;
+  line-height: 1.22;
+}
+
+.chapter-list small {
+  min-width: 0;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
 .section {
   padding: 70px 0;
   border-top: 1px solid var(--line);
@@ -308,5 +380,13 @@ h3 {
   .nav {
     flex-wrap: wrap;
   }
-}
 
+  .docs-panel-head,
+  .chapter-list a {
+    padding: 16px;
+  }
+
+  .chapter-list a {
+    grid-template-columns: 32px minmax(0, 1fr);
+  }
+}

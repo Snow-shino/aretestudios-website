@@ -1,7 +1,7 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
 ---
 
@@ -20,27 +20,40 @@ const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
         </p>
         <div class="actions">
           <a class="button primary" href={url('/plugins/ase2ue')}>View Ase2UE</a>
-          <a class="button" href={url('/docs/ase2ue/getting-started')}>Read the Docs</a>
+          <a class="button" href={url('/docs/ase2ue')}>Read the Docs</a>
         </div>
       </div>
-      <article class="terminal-card" aria-label="Ase2UE import flow">
-        <div class="terminal-header">
-          <span>Ase2UE import report</span>
-          <span>static docs</span>
+      <aside class="docs-panel" aria-label="Ase2UE documentation chapters">
+        <div class="docs-panel-head">
+          <img src={url('/ase2ue-mark.svg')} alt="" width="42" height="42" />
+          <div>
+            <h2>Ase2UE Docs</h2>
+            <p>Quick setup, importing, sockets, FAQ, and release notes.</p>
+          </div>
         </div>
-        <pre class="terminal-body"><code><span class="accent">Import complete</span>
-
-Texture: T_Player_Sheet
-Sprites: SP_Player_0000...SP_Player_0011
-Flipbooks: FB_Player_Idle, FB_Player_Run
-
-What was done:
-- Imported marker layer SOCKET_Hand
-- Applied PaperSprite sockets
-
-Notes:
-- Generated assets update in place</code></pre>
-      </article>
+        <nav class="chapter-list" aria-label="Documentation chapters">
+          <a href={url('/docs/ase2ue/getting-started')}>
+            <span>01</span>
+            <strong>Getting Started</strong>
+            <small>Install, enable Paper2D, set Aseprite path.</small>
+          </a>
+          <a href={url('/docs/ase2ue/importing')}>
+            <span>02</span>
+            <strong>Importing</strong>
+            <small>Grid, Auto JSON, flipbooks, reimport.</small>
+          </a>
+          <a href={url('/docs/ase2ue/hitboxes-hurtboxes-sockets')}>
+            <span>03</span>
+            <strong>Hitboxes, Hurtboxes & Sockets</strong>
+            <small>Marker layers and PaperSprite sockets.</small>
+          </a>
+          <a href={url('/docs/ase2ue/faq')}>
+            <span>04</span>
+            <strong>FAQ</strong>
+            <small>Common setup and import fixes.</small>
+          </a>
+        </nav>
+      </aside>
     </section>
 
     <section class="section">
