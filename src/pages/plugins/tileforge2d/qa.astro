@@ -163,6 +163,37 @@ const qaSections = [
     ],
   },
 ];
+
+const proceduralSteps = [
+  {
+    title: 'Create a Biome Set data asset',
+    body: 'In the Content Browser, create a Data Asset and choose TileForgeBiomeSetAsset. Name it something like DA_TF_Biomes_Test.',
+  },
+  {
+    title: 'Add one biome',
+    body: 'Open the Biome Set. Add one Biomes entry. Set Biome Id to Meadow, Display Name to Meadow, and Default Weight to 1.0. Default Weight 1.0 means the whole map can generate without hand-painted biome cells yet.',
+  },
+  {
+    title: 'Add one scatter rule set',
+    body: 'Add one Scatter Rule Sets entry. Set Rule Set Id to MeadowScatter. Add one Rule. Set Rule Id to GrassScatter, Biome Id to Meadow, and Density to 0.25.',
+  },
+  {
+    title: 'Add one tile output entry',
+    body: 'Inside the rule, add one Entries item. Set Output Type to Tile. In Tile, choose your TileForge Tileset and a visible Tile Index. Keep Weight at 1, Min Biome Weight at 0.1, and Spawn Chance at 1.0.',
+  },
+  {
+    title: 'Assign it to the map',
+    body: 'Open the TileForge Map asset. In Procedural > Generation, set Biome Set to your Biome Set asset. Leave Weight Layer Name as BiomeWeights. Set Replace Existing Tiles off for the first test.',
+  },
+  {
+    title: 'Generate from the map editor',
+    body: 'Open the TileForge Map editor, select the layer you want to paint into, and click Generate in the top toolbar. The button uses a fresh seed and paints tile scatter onto the active layer.',
+  },
+  {
+    title: 'Clear and retry',
+    body: 'Click Clear Generated to remove the last generated placements. Change Density or click Generate again for a new seed. Turn Replace Existing Tiles on only when you intentionally want generation to overwrite painted tiles.',
+  },
+];
 ---
 
 <SiteLayout
@@ -191,6 +222,37 @@ const qaSections = [
           unchecked to verified only after real editor, runtime, packaged, multiplayer, or fresh-project tests.
         </p>
       </article>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Procedural quick test</p>
+            <h2>How to make Biome Set generation do something visible.</h2>
+          </div>
+          <p>This is the current MVP workflow. Biome paint UI comes later, so Default Weight is the fastest first test.</p>
+        </div>
+        <div class="qa-steps">
+          {proceduralSteps.map((step, index) => (
+            <article class="qa-step">
+              <span class="qa-number">{String(index + 1).padStart(2, '0')}</span>
+              <div>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <article class="qa-warning-card qa-note">
+          <p class="eyebrow">Current limitation</p>
+          <h2>What works right now?</h2>
+          <p>
+            The first Generate button supports Tile scatter entries. Actor, TileActor, ObjectMarker,
+            collision-aware scatter, biome brushes, and dungeon baking are still planned follow-up passes.
+          </p>
+        </article>
+      </div>
     </section>
 
     <section class="section">
