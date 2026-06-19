@@ -1,4 +1,4 @@
-# Snocrest Plugins Website
+# Arête Plugins Website
 
 Static Astro + Starlight website for `plugins.snocrest.com`.
 

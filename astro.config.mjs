@@ -7,10 +7,10 @@ export default defineConfig({
   output: 'static',
   integrations: [
     starlight({
-      title: 'Snocrest Plugins',
+      title: 'Arête Plugins',
       logo: {
         src: './src/assets/ase2ue-mark.svg',
-        alt: 'Snocrest Plugins',
+        alt: 'Arête Plugins',
       },
       customCss: ['./src/styles/starlight.css'],
       social: [

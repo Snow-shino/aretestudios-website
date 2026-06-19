@@ -2,8 +2,8 @@
 import '../styles/site.css';
 
 const {
-  title = 'Snocrest Plugins',
-  description = 'Unreal Engine plugins, documentation, and buyer support from Snocrest.',
+  title = 'Arête Plugins',
+  description = 'Unreal Engine plugins, documentation, and buyer support from Arête.',
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
@@ -24,7 +24,7 @@ const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
       <div class="shell topbar-inner">
         <a class="brand" href={url('/')}>
           <img src={url('/ase2ue-mark.svg')} alt="" width="34" height="34" />
-          <span>Snocrest Plugins</span>
+          <span>Arête Plugins</span>
         </a>
         <nav class="nav" aria-label="Main navigation">
           <a href={url('/plugins')}>Plugins</a>
@@ -37,7 +37,7 @@ const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
     <slot />
     <footer class="footer">
       <div class="shell">
-        <p>Snocrest Plugins. Static documentation and plugin support for Unreal Engine creators.</p>
+        <p>Arête Plugins. Static documentation and plugin support for Unreal Engine creators.</p>
       </div>
     </footer>
   </body>
