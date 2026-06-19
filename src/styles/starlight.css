@@ -1,34 +1,39 @@
 :root,
 :root[data-theme='dark'],
 :root[data-theme='light'] {
-  --sl-color-accent-low: #063c37;
-  --sl-color-accent: #13f0d2;
-  --sl-color-accent-high: #c7fff7;
-  --sl-color-white: #f7fbff;
-  --sl-color-gray-1: #edf7f6;
-  --sl-color-gray-2: #c4d4d2;
-  --sl-color-gray-3: #91a5a8;
-  --sl-color-gray-4: #617176;
-  --sl-color-gray-5: #263036;
-  --sl-color-gray-6: #13181b;
-  --sl-color-black: #050607;
+  --sl-color-accent-low: #052b2c;
+  --sl-color-accent: #12e8d0;
+  --sl-color-accent-high: #b9fff7;
+  --sl-color-white: #f6fbff;
+  --sl-color-gray-1: #e8f2f4;
+  --sl-color-gray-2: #bed0d4;
+  --sl-color-gray-3: #879ca2;
+  --sl-color-gray-4: #52646b;
+  --sl-color-gray-5: #202b31;
+  --sl-color-gray-6: #0e1519;
+  --sl-color-black: #030506;
+  --sl-color-bg: #030506;
+  --sl-color-bg-nav: rgba(4, 7, 9, 0.94);
+  --sl-color-bg-sidebar: #080d10;
+  --sl-color-bg-inline-code: #121a1f;
+  --sl-color-hairline: #1a272d;
+  --sl-color-hairline-light: #22323a;
   --sl-font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 body {
   background:
-    radial-gradient(circle at 86% 8%, rgba(19, 240, 210, 0.1), transparent 32rem),
-    radial-gradient(circle at 12% 18%, rgba(255, 122, 24, 0.12), transparent 30rem),
-    #050607;
+    radial-gradient(circle at 82% 0%, rgba(18, 232, 208, 0.12), transparent 34rem),
+    linear-gradient(145deg, #030506 0%, #061012 48%, #030506 100%);
 }
 
 a,
 .sl-markdown-content a {
-  color: #13f0d2;
+  color: #12e8d0;
 }
 
 .site-title {
-  color: #f7fbff;
+  color: #f6fbff;
 }
 
 .site-title {
@@ -36,7 +41,30 @@ a,
 }
 
 .hero img {
-  filter: drop-shadow(0 18px 40px rgba(19, 240, 210, 0.22));
+  filter: drop-shadow(0 18px 40px rgba(18, 232, 208, 0.2));
+}
+
+.header,
+.sidebar-pane,
+.right-sidebar,
+.mobile-preferences,
+starlight-menu-button button {
+  background-color: rgba(4, 7, 9, 0.94);
+}
+
+#starlight__sidebar,
+.right-sidebar-panel {
+  background: #080d10;
+}
+
+.content-panel {
+  background: transparent;
+}
+
+.sl-markdown-content pre,
+.expressive-code figure.frame {
+  border-color: #22323a;
+  background: #080d10;
 }
 
 .sl-markdown-content h2 {
@@ -51,12 +79,12 @@ a,
 .sl-markdown-content h1,
 .sl-markdown-content h2,
 .sl-markdown-content h3 {
-  color: #f7fbff;
+  color: #f6fbff;
 }
 
 .sl-markdown-content strong,
 .sl-markdown-content code {
-  color: #ffb15f;
+  color: #ff9a3d;
 }
 
 .sl-markdown-content pre code {
