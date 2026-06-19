@@ -4,6 +4,31 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
 
+const plugins = [
+  {
+    name: 'Ase2UE',
+    label: 'Aseprite import pipeline',
+    description:
+      'Import saved Aseprite files into Unreal Engine and generate Paper2D textures, sprites, flipbooks, sockets, and optional hitbox helper data.',
+    icon: '/ase2ue-mark.svg',
+    pluginHref: '/plugins/ase2ue',
+    docsHref: '/docs/ase2ue',
+    repoHref: 'https://github.com/Snow-shino/Ase2ue',
+    status: 'Under review',
+  },
+  {
+    name: 'TileForge2D',
+    label: '2D world-building tools',
+    description:
+      'Create game-ready tile maps in Unreal with tilesets, layers, collision, Tile Actors, destructibles, projection modes, and Blueprint hooks.',
+    icon: '/tileforge2d-mark.svg',
+    pluginHref: '/plugins/tileforge2d',
+    docsHref: '/docs/tileforge2d',
+    repoHref: 'https://github.com/Snow-shino/TileForge2D',
+    status: 'In development',
+  },
+];
+
 const chapters = [
   {
     number: '01',
@@ -58,58 +83,107 @@ const chapters = [
 ---
 
 <SiteLayout
-  title="Arête Plugin Documentation"
-  description="Searchable Arête plugin documentation for Ase2UE and TileForge2D."
+  title="Arete Plugins"
+  description="Unreal Engine plugin landing page for Arete tools, including Ase2UE and TileForge2D."
 >
   <main>
-    <section class="shell hero docs-hero">
+    <section class="shell hero landing-hero">
       <div>
-        <p class="eyebrow">Arête Plugin Documentation</p>
-        <h1>Unreal Engine plugin docs for 2D creators.</h1>
+        <p class="eyebrow">Arete Plugins</p>
+        <h1>Unreal Engine tools for 2D creators.</h1>
         <p class="lead">
-          Find setup guides, workflow notes, and QA checklists for Ase2UE and TileForge2D.
-          Ase2UE handles Aseprite import workflows; TileForge2D handles game-ready tile maps.
+          A focused plugin hub for artists, solo developers, and small teams building 2D games in Unreal Engine.
+          Start with Ase2UE for art import workflows, then use TileForge2D for game-ready maps.
         </p>
         <div class="actions">
-          <a class="button primary" href={url('/docs/tileforge2d')}>Open TileForge Docs</a>
+          <a class="button primary" href={url('/plugins')}>Browse Plugins</a>
           <a class="button" href={url('/docs/ase2ue')}>Open Ase2UE Docs</a>
-          <a class="button" href={url('/plugins/ase2ue')}>View Plugin Page</a>
-          <a class="button" href={url('/plugins/tileforge2d')}>View TileForge2D</a>
+          <a class="button" href={url('/docs/tileforge2d')}>Open TileForge Docs</a>
         </div>
       </div>
 
-      <aside class="docs-panel" aria-label="Documentation search">
-        <div class="docs-panel-head">
-          <img src={url('/ase2ue-mark.svg')} alt="" width="42" height="42" />
-          <div>
-            <h2>Find Instructions</h2>
-            <p>Search setup, importing, tile maps, Tile Actors, projections, sockets, and QA help.</p>
-          </div>
+      <aside class="landing-panel" aria-label="Plugin catalog summary">
+        <div class="terminal-header">
+          <span>plugin catalog</span>
+          <span>2D</span>
         </div>
-        <div class="search-box">
-          <label for="docs-search">Search documentation</label>
-          <input
-            id="docs-search"
-            type="search"
-            placeholder="Search: Tile Actors, sockets, Grid, Aseprite path..."
-            autocomplete="off"
-          />
+        <div class="landing-stack">
+          {plugins.map((plugin) => (
+            <a class="mini-plugin" href={url(plugin.pluginHref)}>
+              <img src={url(plugin.icon)} alt="" width="42" height="42" />
+              <span>
+                <strong>{plugin.name}</strong>
+                <small>{plugin.label}</small>
+              </span>
+            </a>
+          ))}
         </div>
       </aside>
+    </section>
+
+    <section class="section plugin-showcase">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Plugins</p>
+            <h2>Choose a workflow.</h2>
+          </div>
+          <p>
+            Each plugin gets its own page, docs section, and support path. This homepage is the master landing page for the full Arete plugin catalog.
+          </p>
+        </div>
+
+        <div class="plugin-card-grid">
+          {plugins.map((plugin) => (
+            <article class="plugin-card">
+              <div class="plugin-card-head">
+                <img src={url(plugin.icon)} alt="" width="58" height="58" />
+                <div>
+                  <p class="eyebrow">{plugin.status}</p>
+                  <h3>{plugin.name}</h3>
+                </div>
+              </div>
+              <p>{plugin.description}</p>
+              <div class="actions">
+                <a class="button primary" href={url(plugin.pluginHref)}>Plugin Page</a>
+                <a class="button" href={url(plugin.docsHref)}>Docs</a>
+                <a class="button" href={plugin.repoHref}>GitHub</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
     </section>
 
     <section class="section docs-directory">
       <div class="shell">
         <div class="section-head">
           <div>
-            <p class="eyebrow">Chapters</p>
-            <h2>Choose a documentation chapter.</h2>
+            <p class="eyebrow">Documentation</p>
+            <h2>Jump straight into the docs.</h2>
           </div>
-          <p>
-            These are the buyer-facing docs linked from the plugin and Fab listing. The full guide is
-            also searchable inside the documentation pages.
-          </p>
+          <p>Search the most common setup and workflow chapters across the current plugin catalog.</p>
         </div>
+
+        <div class="docs-panel docs-search-panel" aria-label="Documentation search">
+          <div class="docs-panel-head">
+            <img src={url('/ase2ue-mark.svg')} alt="" width="42" height="42" />
+            <div>
+              <h2>Find Instructions</h2>
+              <p>Search setup, importing, tile maps, Tile Actors, projections, sockets, and QA help.</p>
+            </div>
+          </div>
+          <div class="search-box">
+            <label for="docs-search">Search documentation</label>
+            <input
+              id="docs-search"
+              type="search"
+              placeholder="Search: Tile Actors, sockets, Grid, Aseprite path..."
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
         <div class="chapter-grid" id="chapter-grid">
           {chapters.map((chapter) => (
             <a
@@ -124,6 +198,30 @@ const chapters = [
           ))}
         </div>
         <p class="no-results" id="no-results" hidden>No matching documentation chapters.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Direct Links</p>
+            <h2>Review-safe plugin paths.</h2>
+          </div>
+          <p>Ase2UE keeps its existing docs URL while TileForge2D lives beside it as a separate plugin section.</p>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <h3>Ase2UE</h3>
+            <p>The review docs path remains unchanged.</p>
+            <p><a href={url('/docs/ase2ue')}>/docs/ase2ue/</a></p>
+          </article>
+          <article class="card">
+            <h3>TileForge2D</h3>
+            <p>TileForge2D has its own docs section on the same site.</p>
+            <p><a href={url('/docs/tileforge2d')}>/docs/tileforge2d/</a></p>
+          </article>
+        </div>
       </div>
     </section>
   </main>
