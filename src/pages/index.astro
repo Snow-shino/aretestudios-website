@@ -112,7 +112,7 @@ const chapters = [
             <a class="mini-plugin" href={url(plugin.pluginHref)}>
               <img src={url(plugin.icon)} alt="" width="42" height="42" />
               <span>
-                <strong>{plugin.name}</strong>
+                <strong>{plugin.name === 'Ase2UE' ? <>Ase<span class="ase-two">2</span>UE</> : plugin.name}</strong>
                 <small>{plugin.label}</small>
               </span>
             </a>
@@ -140,7 +140,7 @@ const chapters = [
                 <img src={url(plugin.icon)} alt="" width="58" height="58" />
                 <div>
                   <p class="eyebrow">{plugin.status}</p>
-                  <h3>{plugin.name}</h3>
+                  <h3>{plugin.name === 'Ase2UE' ? <>Ase<span class="ase-two">2</span>UE</> : plugin.name}</h3>
                 </div>
               </div>
               <p>{plugin.description}</p>
@@ -212,7 +212,7 @@ const chapters = [
         </div>
         <div class="grid two">
           <article class="card">
-            <h3>Ase2UE</h3>
+            <h3>Ase<span class="ase-two">2</span>UE</h3>
             <p>The review docs path remains unchanged.</p>
             <p><a href={url('/docs/ase2ue')}>/docs/ase2ue/</a></p>
           </article>

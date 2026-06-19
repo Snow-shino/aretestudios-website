@@ -193,6 +193,10 @@ h3 {
   color: var(--accent-2);
 }
 
+.ase-two {
+  color: #13f0d2;
+}
+
 .docs-panel {
   border: 1px solid var(--line);
   border-radius: 8px;
