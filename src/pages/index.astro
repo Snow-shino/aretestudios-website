@@ -3,86 +3,133 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
+
+const chapters = [
+  {
+    number: '01',
+    title: 'Getting Started',
+    description: 'Install Ase2UE, enable Paper2D, set the Aseprite executable path, and import your first file.',
+    href: '/docs/ase2ue/getting-started',
+    keywords: 'install setup paper2d aseprite executable path first import source asset',
+  },
+  {
+    number: '02',
+    title: 'Importing',
+    description: 'Use Ase2 Source assets, output folders, Grid extraction, Auto JSON extraction, and reimport.',
+    href: '/docs/ase2ue/importing',
+    keywords: 'import ase2 source destination grid auto json reimport texture sprite flipbook',
+  },
+  {
+    number: '03',
+    title: 'Hitboxes, Hurtboxes & Sockets',
+    description: 'Create marker layers for SOCKET_, HIT_, and HURT_ workflows in Paper2D.',
+    href: '/docs/ase2ue/hitboxes-hurtboxes-sockets',
+    keywords: 'socket sockets hitbox hurtbox marker layer weapon hand trace paper sprite',
+  },
+  {
+    number: '04',
+    title: 'FAQ & Troubleshooting',
+    description: 'Fix common setup, Aseprite path, file picker, flipbook, marker, and socket issues.',
+    href: '/docs/ase2ue/faq',
+    keywords: 'faq troubleshooting errors warnings aseprite path sockets flipbooks file picker',
+  },
+  {
+    number: '05',
+    title: 'Changelog',
+    description: 'Review release notes and version history for Ase2UE.',
+    href: '/docs/ase2ue/changelog',
+    keywords: 'changelog release notes version history updates',
+  },
+];
 ---
 
 <SiteLayout
-  title="Snocrest Plugins"
-  description="Plugin showcase and documentation for Snocrest Unreal Engine tools."
+  title="Ase2UE Documentation"
+  description="Searchable Ase2UE documentation for Aseprite to Unreal Engine Paper2D importing."
 >
   <main>
-    <section class="shell hero">
+    <section class="shell hero docs-hero">
       <div>
-        <p class="eyebrow">Unreal Engine creator tools</p>
-        <h1>Focused plugins for faster 2D production.</h1>
+        <p class="eyebrow">Ase2UE Documentation</p>
+        <h1>Aseprite to Unreal Engine Paper2D importing.</h1>
         <p class="lead">
-          Snocrest Plugins is the home for practical Unreal Engine tools, buyer documentation,
-          and support resources. The first release is Ase2UE, an Aseprite-to-Paper2D workflow plugin.
+          Learn how to install Ase2UE, import Aseprite files, generate PaperSprites and
+          PaperFlipbooks, reimport safely, and use marker layers for sockets, hitboxes, and hurtboxes.
         </p>
         <div class="actions">
-          <a class="button primary" href={url('/plugins/ase2ue')}>View Ase2UE</a>
-          <a class="button" href={url('/docs/ase2ue')}>Read the Docs</a>
+          <a class="button primary" href={url('/docs/ase2ue')}>Open Full Docs</a>
+          <a class="button" href={url('/plugins/ase2ue')}>View Plugin Page</a>
         </div>
       </div>
-      <aside class="docs-panel" aria-label="Ase2UE documentation chapters">
+
+      <aside class="docs-panel" aria-label="Documentation search">
         <div class="docs-panel-head">
           <img src={url('/ase2ue-mark.svg')} alt="" width="42" height="42" />
           <div>
-            <h2>Ase2UE Docs</h2>
-            <p>Quick setup, importing, sockets, FAQ, and release notes.</p>
+            <h2>Find Instructions</h2>
+            <p>Search setup, importing, Grid mode, sockets, hitboxes, flipbooks, and reimport help.</p>
           </div>
         </div>
-        <nav class="chapter-list" aria-label="Documentation chapters">
-          <a href={url('/docs/ase2ue/getting-started')}>
-            <span>01</span>
-            <strong>Getting Started</strong>
-            <small>Install, enable Paper2D, set Aseprite path.</small>
-          </a>
-          <a href={url('/docs/ase2ue/importing')}>
-            <span>02</span>
-            <strong>Importing</strong>
-            <small>Grid, Auto JSON, flipbooks, reimport.</small>
-          </a>
-          <a href={url('/docs/ase2ue/hitboxes-hurtboxes-sockets')}>
-            <span>03</span>
-            <strong>Hitboxes, Hurtboxes & Sockets</strong>
-            <small>Marker layers and PaperSprite sockets.</small>
-          </a>
-          <a href={url('/docs/ase2ue/faq')}>
-            <span>04</span>
-            <strong>FAQ</strong>
-            <small>Common setup and import fixes.</small>
-          </a>
-        </nav>
+        <div class="search-box">
+          <label for="docs-search">Search documentation</label>
+          <input
+            id="docs-search"
+            type="search"
+            placeholder="Search: sockets, Grid, Aseprite path..."
+            autocomplete="off"
+          />
+        </div>
       </aside>
     </section>
 
-    <section class="section">
+    <section class="section docs-directory">
       <div class="shell">
         <div class="section-head">
           <div>
-            <p class="eyebrow">Plugin showcase</p>
-            <h2>Built for concrete workflows.</h2>
+            <p class="eyebrow">Chapters</p>
+            <h2>Choose a documentation chapter.</h2>
           </div>
           <p>
-            Each plugin page explains what the tool does, who it is for, and where to find setup docs,
-            support notes, and changelogs.
+            These are the buyer-facing docs linked from the plugin and Fab listing. The full guide is
+            also searchable inside the documentation pages.
           </p>
         </div>
-        <div class="grid">
-          <article class="card">
-            <h3>Buyer-friendly docs</h3>
-            <p>Simple setup steps, searchable keywords, and troubleshooting written for working creators.</p>
-          </article>
-          <article class="card">
-            <h3>Static and fast</h3>
-            <p>No WordPress and no runtime server. The site builds to static files for DreamHost hosting.</p>
-          </article>
-          <article class="card">
-            <h3>Launch-ready paths</h3>
-            <p>Docs URLs are stable and ready to use in Fab listings, support replies, and videos.</p>
-          </article>
+        <div class="chapter-grid" id="chapter-grid">
+          {chapters.map((chapter) => (
+            <a
+              class="chapter-card"
+              href={url(chapter.href)}
+              data-search={`${chapter.title} ${chapter.description} ${chapter.keywords}`.toLowerCase()}
+            >
+              <span>{chapter.number}</span>
+              <strong>{chapter.title}</strong>
+              <small>{chapter.description}</small>
+            </a>
+          ))}
         </div>
+        <p class="no-results" id="no-results" hidden>No matching documentation chapters.</p>
       </div>
     </section>
   </main>
+
+  <script>
+    const input = document.getElementById('docs-search') as HTMLInputElement | null;
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-search]'));
+    const noResults = document.getElementById('no-results');
+
+    input?.addEventListener('input', () => {
+      const query = input.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      for (const card of cards) {
+        const matches = !query || card.dataset.search?.includes(query);
+        card.toggleAttribute('hidden', !matches);
+        if (matches) visibleCount += 1;
+      }
+
+      if (noResults) {
+        noResults.hidden = visibleCount > 0;
+      }
+    });
+  </script>
 </SiteLayout>

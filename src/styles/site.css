@@ -224,6 +224,37 @@ h3 {
   font-size: 0.94rem;
 }
 
+.search-box {
+  display: grid;
+  gap: 8px;
+  padding: 20px;
+}
+
+.search-box label {
+  color: var(--accent-2);
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.search-box input {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #08080a;
+  color: var(--text);
+  font: inherit;
+  padding: 0 14px;
+  outline: none;
+}
+
+.search-box input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 122, 26, 0.16);
+}
+
 .chapter-list {
   display: grid;
 }
@@ -279,6 +310,54 @@ h3 {
 .section-head p {
   max-width: 620px;
   margin: 0;
+  color: var(--muted);
+}
+
+.docs-directory {
+  padding-top: 0;
+}
+
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.chapter-card {
+  display: grid;
+  gap: 10px;
+  min-height: 190px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  padding: 18px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.chapter-card:hover,
+.chapter-card:focus-visible {
+  border-color: var(--accent);
+  background: var(--panel-2);
+}
+
+.chapter-card span {
+  color: var(--accent-2);
+  font: 0.82rem/1.2 "Cascadia Mono", Consolas, monospace;
+}
+
+.chapter-card strong {
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+.chapter-card small {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.no-results {
+  margin: 18px 0 0;
   color: var(--muted);
 }
 
@@ -354,6 +433,7 @@ h3 {
 
 @media (max-width: 860px) {
   .hero,
+  .chapter-grid,
   .grid,
   .grid.two,
   .plugin-row {
