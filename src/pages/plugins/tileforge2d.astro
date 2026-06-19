@@ -1,0 +1,93 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
+---
+
+<SiteLayout
+  title="TileForge2D | Arête Plugins"
+  description="TileForge2D is a professional Unreal Engine editor plugin for game-ready 2D tile maps."
+>
+  <main>
+    <section class="shell hero">
+      <div>
+        <p class="eyebrow">Tiled-style editing, Unreal-native runtime</p>
+        <h1>TileForge2D</h1>
+        <p class="lead">
+          TileForge2D is a professional 2D world-building plugin for Unreal Engine. It is being built
+          around tilesets, map assets, layer painting, collision, Tile Actors, destructibles,
+          projection modes, and Blueprint gameplay hooks.
+        </p>
+        <div class="actions">
+          <a class="button primary" href={url('/docs/tileforge2d')}>Read Docs</a>
+          <a class="button" href={url('/docs/tileforge2d/quick-start')}>Quick Start</a>
+          <a class="button" href={url('/docs/tileforge2d/tile-actors')}>Tile Actors</a>
+          <a class="button" href="https://github.com/Snow-shino/TileForge2D">GitHub</a>
+        </div>
+      </div>
+      <article class="terminal-card">
+        <div class="terminal-header">
+          <span>tileforge2d</span>
+          <span>world builder</span>
+        </div>
+        <pre class="terminal-body"><code>Tileset asset
+  -> Map asset
+  -> Paint layers
+  -> Generate map actor
+  -> Layer collision
+  -> Destroy tile
+  -> Tile Actor hooks</code></pre>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Game-ready maps</p>
+            <h2>More than visual tile painting.</h2>
+          </div>
+          <p>TileForge2D owns its own map data model and runtime actor. Paper2D can be supported, but it is not the core tile map system.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>Editor-first workflow</h3>
+            <p>Create tilesets, maps, layers, collision data, and object markers directly inside Unreal.</p>
+          </article>
+          <article class="card">
+            <h3>Tile Actors</h3>
+            <p>Use grid placement for doors, chests, signs, pots, switches, pickups, and destructibles while Blueprint owns gameplay logic.</p>
+          </article>
+          <article class="card">
+            <h3>Projection modes</h3>
+            <p>Keep gameplay grid-based while top-down and isometric modes handle world placement, editor picking, and sorting.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Docs</p>
+            <h2>Start with the current foundation.</h2>
+          </div>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <h3>Quick Start</h3>
+            <p>Create your first tileset, map, layers, and map actor.</p>
+            <p><a href={url('/docs/tileforge2d/quick-start')}>Open guide</a></p>
+          </article>
+          <article class="card">
+            <h3>Tile Actors & Smart Tiles</h3>
+            <p>Plan modular actor-driven interactions for chests, doors, destructibles, and placement systems.</p>
+            <p><a href={url('/docs/tileforge2d/tile-actors')}>Open guide</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+</SiteLayout>

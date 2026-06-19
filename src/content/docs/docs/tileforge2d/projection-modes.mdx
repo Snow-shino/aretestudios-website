@@ -1,0 +1,31 @@
+---
+title: Projection Modes
+description: Top-down and isometric projection support in TileForge2D.
+---
+
+TileForge2D keeps gameplay grid-based and projection-aware.
+
+Projection modes control world placement, editor picking, rendering layout, and sorting. Tile data, save/load, replication, tile actors, biomes, dungeons, and runtime state should stay based on grid coordinates.
+
+## Modes
+
+| Mode | Purpose |
+| --- | --- |
+| `TopDownOrthographic` | Standard square-grid top-down maps. |
+| `IsometricDiamond` | Diamond isometric maps using shared TileForge2D map data. |
+| `IsometricStaggered` | Planned later. |
+
+## Helper APIs
+
+- `GridToWorld`
+- `WorldToGrid`
+- `GetCellCenterWorld`
+- `GetCellBoundsWorld`
+- `GetNeighborCells`
+- `GetSortKeyForCell`
+
+## Sorting
+
+Top-down games usually sort characters and tall objects by their world Y position or by a projected cell sort key. Isometric diamond maps usually sort by `GridX + GridY`, with layer and height offsets added on top.
+
+The goal is to make the editor and runtime agree on where a tile is, where actors snap, and how draw order should be calculated.

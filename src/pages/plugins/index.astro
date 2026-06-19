@@ -26,11 +26,13 @@ const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
         </div>
         <pre class="terminal-body"><code>available:
   - Ase2UE
+  - TileForge2D
 
 category:
   - 2D
   - Paper2D
-  - Aseprite workflow</code></pre>
+  - Aseprite workflow
+  - Tile map workflow</code></pre>
       </article>
     </section>
 
@@ -43,6 +45,14 @@ category:
             <p>Import Aseprite files into Unreal Engine and generate Paper2D textures, sprites, flipbooks, and sprite sockets.</p>
           </div>
           <a class="button primary" href={url('/plugins/ase2ue')}>Open</a>
+        </div>
+        <div class="plugin-row">
+          <img src={url('/tileforge2d-mark.svg')} alt="" width="58" height="58" />
+          <div>
+            <h2>TileForge2D</h2>
+            <p>Build game-ready 2D maps in Unreal with tilesets, layers, collision, Tile Actors, projection modes, and Blueprint hooks.</p>
+          </div>
+          <a class="button primary" href={url('/plugins/tileforge2d')}>Open</a>
         </div>
       </div>
     </section>

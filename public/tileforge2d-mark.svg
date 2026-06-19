@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
+  <title id="title">TileForge2D mark</title>
+  <rect width="96" height="96" rx="18" fill="#111112"/>
+  <path d="M24 22h21v21H24V22Zm27 0h21v21H51V22ZM24 49h21v21H24V49Zm27 0h21v21H51V49Z" fill="#62d2a2"/>
+  <path d="M30 28h9v9h-9v-9Zm27 0h9v9h-9v-9ZM30 55h9v9h-9v-9Zm27 0h9v9h-9v-9Z" fill="#fff7ef" opacity=".86"/>
+  <path d="M21 76h54" stroke="#ff7a1a" stroke-width="6" stroke-linecap="round"/>
+</svg>

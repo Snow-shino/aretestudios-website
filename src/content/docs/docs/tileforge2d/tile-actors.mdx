@@ -1,0 +1,43 @@
+---
+title: Tile Actors & Smart Tiles
+description: Plan modular actor-driven gameplay on TileForge2D maps.
+---
+
+Tile Actors are the bridge between painted maps and gameplay objects.
+
+Use them for:
+
+- Doors
+- Chests
+- Pots
+- Signs
+- Switches
+- Breakable rocks
+- Cuttable grass
+- Pickups
+- Warp points
+
+## Design Goal
+
+The map owns grid placement. The actor owns gameplay logic.
+
+That means a map can place an object marker at cell `X,Y`, while the actor handles interaction, particles, sounds, inventory checks, animation, and level transitions.
+
+## Suggested Blueprint Pattern
+
+Create a Blueprint child of `TileForgeTileActor`, then configure:
+
+- Visual component: sprite, flipbook, mesh, or custom component.
+- Interaction tag: `Open`, `Break`, `Cut`, `Read`, `Warp`, or your own project tag.
+- Replacement tile or replacement actor behavior.
+- Sound and particle effects.
+- Save key or persistence behavior.
+
+## Runtime Flow
+
+1. Player asks the map actor for the current grid cell or targeted grid cell.
+2. Player sends an interaction tag to the tile actor or map actor.
+3. The tile actor validates the interaction.
+4. The tile actor plays effects, changes state, destroys itself, or asks the map actor to replace a tile.
+
+This keeps the system modular: TileForge2D supplies the grid and hooks, while your game supplies the rules.

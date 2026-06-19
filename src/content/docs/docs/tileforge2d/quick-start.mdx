@@ -1,0 +1,37 @@
+---
+title: TileForge2D Quick Start
+description: Create a TileForge2D tileset, map, layers, and map actor.
+---
+
+## Create Assets
+
+1. In Unreal's Content Browser, create a `TileForge Tileset`.
+2. Open it, assign a source texture, set tile size, then sync tile metadata.
+3. Create a `TileForge Map`.
+4. Add the tileset to the map asset's `Tilesets` array.
+5. Open the map asset and select a tile from the tileset palette.
+6. Paint on the active layer.
+
+## Place In A Level
+
+1. Add a `TileForgeMapActor` to the level.
+2. Assign the `TileForge Map` asset.
+3. Use `Rebuild Map` after changes if needed.
+
+## Blueprint Basics
+
+Use the map actor helpers to:
+
+- Convert world position to grid position.
+- Convert grid position to world position.
+- Get the tile under a player.
+- Destroy or replace a tile at a grid cell.
+- Fire tile interaction events from your own player, tool, weapon, or inventory logic.
+
+## First Things To Test
+
+- Zoom and pan in the tileset editor.
+- Select one or more tiles and edit metadata.
+- Paint, erase, fill, and pick tiles in the map editor.
+- Lock a layer and confirm painting is blocked.
+- Spawn a map actor and confirm the assigned map appears.

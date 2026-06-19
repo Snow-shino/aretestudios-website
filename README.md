@@ -5,17 +5,23 @@ Static Astro + Starlight website for `plugins.snocrest.com`.
 ## Live Documentation
 
 - [Ase2UE Documentation](https://snow-shino.github.io/aretestudios-website/docs/ase2ue/)
+- [TileForge2D Documentation](https://snow-shino.github.io/aretestudios-website/docs/tileforge2d/)
 
 ## Routes
 
 - `/`
 - `/plugins`
 - `/plugins/ase2ue`
+- `/plugins/tileforge2d`
 - `/docs/ase2ue/getting-started`
 - `/docs/ase2ue/importing`
 - `/docs/ase2ue/hitboxes-hurtboxes-sockets`
 - `/docs/ase2ue/faq`
 - `/docs/ase2ue/changelog`
+- `/docs/tileforge2d`
+- `/docs/tileforge2d/quick-start`
+- `/docs/tileforge2d/tile-actors`
+- `/docs/tileforge2d/projection-modes`
 
 ## Commands
 

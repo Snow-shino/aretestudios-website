@@ -17,7 +17,7 @@ export default defineConfig({
         {
           icon: 'github',
           label: 'GitHub',
-          href: 'https://github.com/Snow-shino/Ase2ue',
+          href: 'https://github.com/Snow-shino',
         },
       ],
       sidebar: [
@@ -30,6 +30,16 @@ export default defineConfig({
             { label: 'Hitboxes, Hurtboxes & Sockets', slug: 'docs/ase2ue/hitboxes-hurtboxes-sockets' },
             { label: 'FAQ', slug: 'docs/ase2ue/faq' },
             { label: 'Changelog', slug: 'docs/ase2ue/changelog' },
+          ],
+        },
+        {
+          label: 'TileForge2D',
+          items: [
+            { label: 'Overview', slug: 'docs/tileforge2d' },
+            { label: 'Quick Start', slug: 'docs/tileforge2d/quick-start' },
+            { label: 'Tile Actors & Smart Tiles', slug: 'docs/tileforge2d/tile-actors' },
+            { label: 'Projection Modes', slug: 'docs/tileforge2d/projection-modes' },
+            { label: 'QA Checklist', slug: 'docs/tileforge2d/post-push-qa-pages' },
           ],
         },
       ],

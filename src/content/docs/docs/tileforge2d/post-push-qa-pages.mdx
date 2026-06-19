@@ -1,0 +1,104 @@
+---
+title: Post-Push QA Checklist
+description: QA checklist for adding TileForge2D to the Arête Plugins website.
+---
+
+## What's New
+
+[ ] Added TileForge2D to the Arête Plugins website navigation.
+
+[ ] Added a TileForge2D plugin page.
+
+[ ] Added TileForge2D docs pages for overview, quick start, Tile Actors, projection modes, and this QA checklist.
+
+[ ] Added a placeholder TileForge2D icon.
+
+## What Changed
+
+[ ] The homepage is now a multi-plugin docs hub for Ase2UE and TileForge2D.
+
+[ ] The plugin catalog now lists Ase2UE and TileForge2D.
+
+[ ] The Starlight docs sidebar now has separate Ase2UE and TileForge2D sections.
+
+## New Features to Test
+
+[ ] Open `/aretestudios-website/` and confirm TileForge2D appears on the homepage.
+
+[ ] Open `/aretestudios-website/plugins` and confirm both plugins are listed.
+
+[ ] Open `/aretestudios-website/plugins/tileforge2d`.
+
+[ ] Open `/aretestudios-website/docs/tileforge2d`.
+
+[ ] Confirm TileForge2D docs sidebar links open Quick Start, Tile Actors, Projection Modes, and QA Checklist.
+
+## Old Features to Retest
+
+[ ] Open `/aretestudios-website/plugins/ase2ue`.
+
+[ ] Open `/aretestudios-website/docs/ase2ue`.
+
+[ ] Confirm Ase2UE docs sidebar links still work.
+
+[ ] Confirm `/aretestudios-website/docs/ase2ue/changelog` still opens.
+
+## Regression Risks
+
+[ ] Navigation could wrap awkwardly on narrow desktop widths because there are more links.
+
+[ ] Starlight sidebar slugs can break if a docs file path is wrong.
+
+[ ] GitHub Pages base path must remain `/aretestudios-website`.
+
+[ ] The TileForge2D icon is placeholder art and should be replaced later.
+
+## Files Added
+
+[ ] `public/tileforge2d-mark.svg`
+
+[ ] `src/pages/plugins/tileforge2d.astro`
+
+[ ] `src/content/docs/docs/tileforge2d/index.mdx`
+
+[ ] `src/content/docs/docs/tileforge2d/quick-start.mdx`
+
+[ ] `src/content/docs/docs/tileforge2d/tile-actors.mdx`
+
+[ ] `src/content/docs/docs/tileforge2d/projection-modes.mdx`
+
+[ ] `src/content/docs/docs/tileforge2d/post-push-qa-pages.mdx`
+
+## Files Changed
+
+[ ] `astro.config.mjs`
+
+[ ] `src/layouts/SiteLayout.astro`
+
+[ ] `src/pages/index.astro`
+
+[ ] `src/pages/plugins/index.astro`
+
+[ ] `src/styles/site.css`
+
+[ ] `README.md`
+
+[ ] `TileForge2D.uplugin` in the TileForge2D plugin repo now points to this Arête docs URL.
+
+## Build / Test Results
+
+[ ] Build passed with bundled Node 24: `npm run build`
+
+[ ] Build passed with GitHub Pages base path: `ASTRO_BASE=/aretestudios-website npm run build`
+
+## Suggested Commit Message
+
+`docs: add TileForge2D to Arete plugin site`
+
+## Next Recommended Step
+
+[ ] Replace the placeholder TileForge2D icon with final art.
+
+[ ] Add screenshots or GIFs after the TileForge2D editor UI stabilizes.
+
+[ ] Confirm the pushed GitHub Pages preview updates after Actions finishes.

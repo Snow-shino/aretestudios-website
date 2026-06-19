@@ -7,34 +7,48 @@ const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
 const chapters = [
   {
     number: '01',
-    title: 'Getting Started',
+    title: 'Ase2UE Getting Started',
     description: 'Install Ase2UE, enable Paper2D, set the Aseprite executable path, and import your first file.',
     href: '/docs/ase2ue/getting-started',
     keywords: 'install setup paper2d aseprite executable path first import source asset',
   },
   {
     number: '02',
-    title: 'Importing',
+    title: 'Ase2UE Importing',
     description: 'Use Ase2 Source assets, output folders, Grid extraction, Auto JSON extraction, and reimport.',
     href: '/docs/ase2ue/importing',
     keywords: 'import ase2 source destination grid auto json reimport texture sprite flipbook',
   },
   {
     number: '03',
-    title: 'Hitboxes, Hurtboxes & Sockets',
+    title: 'TileForge2D Quick Start',
+    description: 'Create tilesets, maps, layers, and map actors for a first TileForge2D test.',
+    href: '/docs/tileforge2d/quick-start',
+    keywords: 'tileforge tileforge2d quick start tileset map actor layer paint collision',
+  },
+  {
+    number: '04',
+    title: 'Tile Actors & Smart Tiles',
+    description: 'Plan doors, chests, pots, destructibles, particles, sounds, and grid-bound actors.',
+    href: '/docs/tileforge2d/tile-actors',
+    keywords: 'tile actors smart tiles chest door destructible particles sounds interaction blueprint',
+  },
+  {
+    number: '05',
+    title: 'Ase2UE Hitboxes, Hurtboxes & Sockets',
     description: 'Create marker layers for SOCKET_, HIT_, and HURT_ workflows in Paper2D.',
     href: '/docs/ase2ue/hitboxes-hurtboxes-sockets',
     keywords: 'socket sockets hitbox hurtbox marker layer weapon hand trace paper sprite',
   },
   {
-    number: '04',
+    number: '06',
     title: 'FAQ & Troubleshooting',
     description: 'Fix common setup, Aseprite path, file picker, flipbook, marker, and socket issues.',
     href: '/docs/ase2ue/faq',
     keywords: 'faq troubleshooting errors warnings aseprite path sockets flipbooks file picker',
   },
   {
-    number: '05',
+    number: '07',
     title: 'Changelog',
     description: 'Review release notes and version history for Ase2UE.',
     href: '/docs/ase2ue/changelog',
@@ -44,21 +58,23 @@ const chapters = [
 ---
 
 <SiteLayout
-  title="Ase2UE Documentation"
-  description="Searchable Ase2UE documentation for Aseprite to Unreal Engine Paper2D importing."
+  title="Arête Plugin Documentation"
+  description="Searchable Arête plugin documentation for Ase2UE and TileForge2D."
 >
   <main>
     <section class="shell hero docs-hero">
       <div>
-        <p class="eyebrow">Ase2UE Documentation</p>
-        <h1>Aseprite to Unreal Engine Paper2D importing.</h1>
+        <p class="eyebrow">Arête Plugin Documentation</p>
+        <h1>Unreal Engine plugin docs for 2D creators.</h1>
         <p class="lead">
-          Learn how to install Ase2UE, import Aseprite files, generate PaperSprites and
-          PaperFlipbooks, reimport safely, and use marker layers for sockets, hitboxes, and hurtboxes.
+          Find setup guides, workflow notes, and QA checklists for Ase2UE and TileForge2D.
+          Ase2UE handles Aseprite import workflows; TileForge2D handles game-ready tile maps.
         </p>
         <div class="actions">
-          <a class="button primary" href={url('/docs/ase2ue')}>Open Full Docs</a>
+          <a class="button primary" href={url('/docs/tileforge2d')}>Open TileForge Docs</a>
+          <a class="button" href={url('/docs/ase2ue')}>Open Ase2UE Docs</a>
           <a class="button" href={url('/plugins/ase2ue')}>View Plugin Page</a>
+          <a class="button" href={url('/plugins/tileforge2d')}>View TileForge2D</a>
         </div>
       </div>
 
@@ -67,7 +83,7 @@ const chapters = [
           <img src={url('/ase2ue-mark.svg')} alt="" width="42" height="42" />
           <div>
             <h2>Find Instructions</h2>
-            <p>Search setup, importing, Grid mode, sockets, hitboxes, flipbooks, and reimport help.</p>
+            <p>Search setup, importing, tile maps, Tile Actors, projections, sockets, and QA help.</p>
           </div>
         </div>
         <div class="search-box">
@@ -75,7 +91,7 @@ const chapters = [
           <input
             id="docs-search"
             type="search"
-            placeholder="Search: sockets, Grid, Aseprite path..."
+            placeholder="Search: Tile Actors, sockets, Grid, Aseprite path..."
             autocomplete="off"
           />
         </div>
