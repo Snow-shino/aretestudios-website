@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ase2UE Documentation</title>
+    <meta
+      name="description"
+      content="Ase2UE documentation for importing Aseprite files into Unreal Engine Paper2D with sprites, flipbooks, sockets, marker layers, and reimport workflows."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="shell nav-inner">
+        <a class="brand" href="#top">Ase2UE Docs</a>
+        <div class="links">
+          <a href="#quick-start">Quick Start</a>
+          <a href="#features">Features</a>
+          <a href="#settings">Settings</a>
+          <a href="#markers">Sockets</a>
+          <a href="#troubleshooting">Troubleshooting</a>
+        </div>
+      </div>
+    </nav>
+
+    <header id="top" class="shell hero">
+      <p class="eyebrow">Unreal Engine Paper2D editor plugin</p>
+      <h1>Aseprite to Unreal with less manual slicing.</h1>
+      <p class="lead">
+        Ase2UE imports saved Aseprite files and generates Paper2D textures, sprites,
+        flipbooks, and optional sprite sockets for 2D Unreal projects.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="#quick-start">Start Setup</a>
+        <a class="button" href="#markers">Socket Workflow</a>
+        <a class="button" href="#troubleshooting">Fix A Problem</a>
+      </div>
+    </header>
+
+    <main class="shell layout">
+      <aside class="toc" aria-label="Documentation sections">
+        <h2>Find What You Need</h2>
+        <a href="#what-it-does">What it does</a>
+        <a href="#requirements">Requirements</a>
+        <a href="#quick-start">Quick Start</a>
+        <a href="#features">How features work</a>
+        <a href="#settings">Ase2 Source settings</a>
+        <a href="#extraction">Grid vs Auto</a>
+        <a href="#flipbooks">Flipbooks</a>
+        <a href="#markers">Marker layers and sockets</a>
+        <a href="#report">Import report</a>
+        <a href="#troubleshooting">Troubleshooting</a>
+        <a href="#keywords">Keywords</a>
+      </aside>
+
+      <div class="content">
+        <section id="what-it-does" class="section">
+          <h2>What Ase2UE Does</h2>
+          <p>
+            Ase2UE is an editor tool for artists and solo developers using Aseprite and Paper2D.
+            It turns a saved <code>.ase</code> or <code>.aseprite</code> file into Unreal assets.
+          </p>
+          <div class="feature-grid">
+            <article>
+              <h3>Texture Import</h3>
+              <p>Runs the local Aseprite exporter and imports the generated spritesheet PNG into Unreal.</p>
+            </article>
+            <article>
+              <h3>PaperSprites</h3>
+              <p>Creates or updates PaperSprite assets from Grid cells or Aseprite JSON frame data.</p>
+            </article>
+            <article>
+              <h3>PaperFlipbooks</h3>
+              <p>Creates flipbooks from Aseprite frame tags such as Idle, Run, Attack, or Jump.</p>
+            </article>
+            <article>
+              <h3>Sprite Sockets</h3>
+              <p>Reads 1x1 marker pixels from named layers and writes sockets onto generated sprites.</p>
+            </article>
+            <article>
+              <h3>Stable Reimport</h3>
+              <p>Updates existing generated assets in place, so iteration does not create duplicate piles.</p>
+            </article>
+            <article>
+              <h3>Optional Hitbox Data</h3>
+              <p>Can create an advanced Blueprint-readable data asset for HIT, HURT, and SOCKET data.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="requirements" class="section">
+          <h2>Requirements</h2>
+          <ul>
+            <li>Unreal Engine 5 project.</li>
+            <li>Paper2D plugin enabled.</li>
+            <li>Aseprite installed locally.</li>
+            <li>A saved <code>.ase</code> or <code>.aseprite</code> file.</li>
+          </ul>
+          <p class="note">Ase2UE creates assets in the editor. It is not a runtime importer.</p>
+        </section>
+
+        <section id="quick-start" class="section">
+          <h2>Quick Start</h2>
+          <ol>
+            <li>Enable the Ase2UE plugin.</li>
+            <li>Restart Unreal if prompted.</li>
+            <li>Enable Paper2D if it is not already enabled.</li>
+            <li>Open <code>Project Settings &gt; Plugins &gt; Ase2UE</code>.</li>
+            <li>Set <code>Aseprite Executable Path</code> if needed.</li>
+            <li>Create an <code>Ase2 Source</code> asset in the Content Browser.</li>
+            <li>Set <code>Aseprite File</code> to your <code>.ase</code> or <code>.aseprite</code> file.</li>
+            <li>Set <code>Import Destination</code> to a folder under <code>/Game</code>.</li>
+            <li>Choose Grid or Auto extraction.</li>
+            <li>Click <code>Import Now</code>.</li>
+          </ol>
+          <pre><code>C:/Program Files/Aseprite/Aseprite.exe
+C:/Program Files (x86)/Steam/steamapps/common/Aseprite/Aseprite.exe</code></pre>
+        </section>
+
+        <section id="features" class="section">
+          <h2>How Each Feature Works</h2>
+          <h3>Import Now</h3>
+          <p>
+            <code>Import Now</code> exports the Aseprite file, imports the generated PNG, reads the JSON data,
+            and updates Unreal assets in the selected destination folder.
+          </p>
+          <h3>Generated Assets</h3>
+          <p>A file named <code>Player.aseprite</code> creates a stable layout like this:</p>
+          <pre><code>/Game/YourFolder/Player/
+  Textures/T_Player_Sheet
+  Sprites/SP_Player_0000
+  Flipbooks/FB_Player_Idle
+  Data/DA_Player_Hitboxes</code></pre>
+          <p>The <code>Data</code> folder appears only when advanced hitbox data generation is enabled.</p>
+          <h3>Reimport</h3>
+          <p>
+            Edit in Aseprite, save, then click <code>Import Now</code> again. Ase2UE updates the same
+            generated assets instead of making duplicate copies.
+          </p>
+        </section>
+
+        <section id="settings" class="section">
+          <h2>Ase2 Source Settings</h2>
+          <dl>
+            <dt>Aseprite File</dt>
+            <dd>The source <code>.ase</code> or <code>.aseprite</code> file.</dd>
+            <dt>Import Destination</dt>
+            <dd>The Unreal content folder where generated assets are created. Use a folder under <code>/Game</code>.</dd>
+            <dt>Pivot Mode</dt>
+            <dd>The PaperSprite pivot mode used by generated sprites. Center Center and Bottom Center are common choices.</dd>
+            <dt>Default Material</dt>
+            <dd>The Paper2D material applied to generated sprites.</dd>
+            <dt>Create Flipbooks From Tags</dt>
+            <dd>Creates one PaperFlipbook for each Aseprite frame tag.</dd>
+            <dt>Import Marker Layers</dt>
+            <dd>Reads layers named with <code>SOCKET</code>, <code>HIT</code>, or <code>HURT</code> prefixes.</dd>
+            <dt>Generate Hitbox Data Asset</dt>
+            <dd>Optional advanced setting for Blueprint-readable marker and slice data.</dd>
+          </dl>
+        </section>
+
+        <section id="extraction" class="section">
+          <h2>Grid vs Auto From Aseprite JSON</h2>
+          <h3>Grid</h3>
+          <p>
+            Grid mode cuts the spritesheet into fixed-size cells. Use it when each animation frame uses
+            the same canvas size, especially for socket marker workflows.
+          </p>
+          <pre><code>Sprite Extraction: Grid
+Grid Cell Width: 80
+Grid Cell Height: 80</code></pre>
+          <h3>Auto From Aseprite JSON</h3>
+          <p>
+            Auto mode reads frame rectangles from Aseprite's exported JSON. Use it for packed or trimmed
+            frames when exact socket marker placement is not needed.
+          </p>
+        </section>
+
+        <section id="flipbooks" class="section">
+          <h2>Flipbooks From Tags</h2>
+          <p>Aseprite tags become PaperFlipbooks.</p>
+          <pre><code>Idle -> FB_Player_Idle
+Run -> FB_Player_Run
+Attack -> FB_Player_Attack</code></pre>
+          <p>
+            Enable <code>Use Aseprite Frame Durations</code> if you want the flipbook timing to match
+            the timing set in Aseprite.
+          </p>
+        </section>
+
+        <section id="markers" class="section">
+          <h2>Marker Layers And Sockets</h2>
+          <p>
+            Marker layers are separate Aseprite layers used for gameplay helper points. Ase2UE hides
+            these layers from the main texture, exports them separately, and writes matching sockets
+            onto generated PaperSprites.
+          </p>
+          <h3>Create A Socket</h3>
+          <ol>
+            <li>Create a new layer in Aseprite.</li>
+            <li>Name it with a supported prefix.</li>
+            <li>Place one visible 1x1 pixel where the socket should be.</li>
+            <li>Save the file.</li>
+            <li>Click <code>Import Now</code> in Unreal.</li>
+          </ol>
+          <pre><code>SOCKET_Hand
+SOCKET_WeaponTip
+HIT_WeaponStart
+HIT_WeaponTip
+HURT_Body</code></pre>
+          <h3>Does Marker Color Matter?</h3>
+          <p>No. Ase2UE reads visible non-transparent pixels. The color is only for your own organization.</p>
+          <h3>Weapon Trace Example</h3>
+          <p>For a melee weapon, use two marker layers:</p>
+          <pre><code>HIT_WeaponStart
+HIT_WeaponTip</code></pre>
+          <p>After import, use those socket locations as the trace start and trace end.</p>
+        </section>
+
+        <section id="report" class="section">
+          <h2>Import Report</h2>
+          <p>After import, Ase2UE shows a report with separate sections:</p>
+          <ul>
+            <li><strong>What was done:</strong> successful actions, such as imported markers or applied sockets.</li>
+            <li><strong>Notes:</strong> helpful information that is not a problem.</li>
+            <li><strong>Warnings:</strong> items that need attention.</li>
+          </ul>
+        </section>
+
+        <section id="troubleshooting" class="section">
+          <h2>Troubleshooting</h2>
+          <h3>Aseprite executable was not found</h3>
+          <p>Set <code>Aseprite Executable Path</code> in <code>Project Settings &gt; Plugins &gt; Ase2UE</code>.</p>
+          <h3>The file picker does not show my file</h3>
+          <p>Switch the picker to all files or paste the full path.</p>
+          <h3>Sockets do not appear</h3>
+          <ul>
+            <li>Enable <code>Import Marker Layers</code>.</li>
+            <li>Use a layer name starting with <code>SOCKET</code>, <code>HIT</code>, or <code>HURT</code>.</li>
+            <li>Use a visible, non-transparent 1x1 pixel.</li>
+            <li>Use Grid mode for exact canvas placement.</li>
+          </ul>
+          <h3>Socket position looks offset</h3>
+          <p>PaperSprite sockets are stored in pivot-space, not Aseprite canvas coordinates.</p>
+          <pre><code>Aseprite pixel: 29, 40
+Pivot on 80x80 sprite: 40, 40
+PaperSprite socket transform: X=-11, Y=0, Z=0</code></pre>
+          <h3>Flipbooks were not created</h3>
+          <p>Make sure <code>Create Flipbooks From Tags</code> is enabled and the Aseprite file has frame tags.</p>
+        </section>
+
+        <section id="keywords" class="section">
+          <h2>Search Keywords</h2>
+          <p>
+            Aseprite, Unreal Engine, UE5, Paper2D, PaperSprite, PaperFlipbook, pixel art,
+            spritesheet, sprite importer, marker layers, sprite sockets, hit boxes, hurt boxes,
+            reimport, 2D game, editor plugin.
+          </p>
+        </section>
+
+        <section id="support" class="section">
+          <h2>Support Checklist</h2>
+          <p>When asking for help, include:</p>
+          <ul>
+            <li>Unreal Engine version.</li>
+            <li>Aseprite version.</li>
+            <li>Ase2UE version.</li>
+            <li>Grid or Auto extraction mode.</li>
+            <li>Grid cell size if using Grid.</li>
+            <li>A screenshot of the Ase2 Source settings.</li>
+            <li>A screenshot of marker layers in Aseprite.</li>
+            <li>The import report text if there was a warning or error.</li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <footer class="shell footer">
+      <p>Ase2UE documentation for Paper2D projects using Aseprite and Unreal Engine.</p>
+    </footer>
+  </body>
+</html>
