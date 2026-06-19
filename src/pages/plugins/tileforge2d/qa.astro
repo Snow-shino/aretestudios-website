@@ -1,0 +1,219 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+
+const qaSections = [
+  {
+    title: 'Core Plugin Health',
+    items: [
+      'Plugin compiles cleanly in the target Unreal version.',
+      'Runtime module loads without editor dependencies.',
+      'Editor module loads only in editor builds.',
+      'Plugin can be enabled or disabled safely.',
+      'Public headers, Blueprint names, categories, and tooltips are clear.',
+    ],
+  },
+  {
+    title: 'Asset Workflow',
+    items: [
+      'Create TileForge Tileset and TileForge Map assets.',
+      'Assets display correctly in the Content Browser.',
+      'Assets save, reload, move, and rename without broken references.',
+      'Missing textures or broken references show useful warnings.',
+    ],
+  },
+  {
+    title: 'Map Editor',
+    items: [
+      'Custom map editor opens without crashing on empty or invalid maps.',
+      'Create, rename, reorder, lock, unlock, hide, and show layers.',
+      'Paint, erase, palette select, save, undo, and redo work correctly.',
+      'Fill tool only fills connected matching regions.',
+    ],
+  },
+  {
+    title: 'Projection Modes',
+    items: [
+      'Top-down and isometric diamond projection work.',
+      'Grid-to-world and world-to-grid conversion work.',
+      'Mouse picking, Tile Actor snapping, collision, and sorting match the active projection.',
+      'Save/load remains grid-based.',
+    ],
+  },
+  {
+    title: 'Runtime Map Actor',
+    items: [
+      'Map actor loads TileForge Map assets and handles missing assets safely.',
+      'Visible layers render in the correct order.',
+      'Runtime tile changes, dirty chunks, collision rebuilds, and Blueprint APIs work in PIE and packaged builds.',
+    ],
+  },
+  {
+    title: 'Tile States',
+    items: [
+      'Tile states support visuals, collision, sorting, interaction tags, and Blueprint events.',
+      'Tile transitions such as grass to dirt and cracked ground to hole entrance work.',
+      'Runtime tile changes mark chunks dirty, update collision, and save/load correctly.',
+    ],
+  },
+  {
+    title: 'Tile Actors',
+    items: [
+      'Tile Actors spawn from map data and store grid position.',
+      'Chest, push block, door, teleport, pickup, and destructible examples work.',
+      'Tile Actors register occupancy and restore moved, opened, or destroyed state.',
+    ],
+  },
+  {
+    title: 'Collision',
+    items: [
+      'Layer collision, tile-state collision, preview/debugging, and runtime updates work.',
+      'Adjacent collision tiles merge where appropriate.',
+      'Invalid collision settings warn instead of crashing.',
+    ],
+  },
+  {
+    title: 'Sorting',
+    items: [
+      'Layer order, Y-sort, isometric X+Y sort, above-player, front, and behind modes work.',
+      'Tile Actors and tall objects sort with the map correctly.',
+      'Sorting preview/debug info exists if possible.',
+    ],
+  },
+  {
+    title: 'TFBiomes',
+    items: [
+      'Biome Set assets can be created.',
+      'Biome weights store on maps and can be painted.',
+      'Scatter rules are deterministic by seed and can be cleared or baked.',
+      'Scatter respects collision, occupied cells, top-down maps, isometric maps, and save/load.',
+    ],
+  },
+  {
+    title: 'TFDungeons',
+    items: [
+      'Dungeon Profile assets can be created.',
+      'Seeded room, corridor, start, exit, wall, floor, loot, enemy, trap, and key/lock generation works.',
+      'Generated dungeons are reachable, bake into maps, and support top-down/isometric save-load flows.',
+    ],
+  },
+  {
+    title: 'Multiplayer / Replication',
+    items: [
+      'Server is authoritative for tile changes, interactions, biome changes, and dungeon generation.',
+      'Clients request actions, server validates, all clients receive grid-based deltas.',
+      'Late joiners receive modified tiles and generated placement state.',
+    ],
+  },
+  {
+    title: 'Save / Load',
+    items: [
+      'Modified and destroyed tiles persist.',
+      'Dug tiles, enterable holes, opened chests, moved push blocks, biome placements, and dungeon data reload.',
+      'Save data stays grid-based and survives projection mode changes.',
+    ],
+  },
+  {
+    title: 'Performance',
+    items: [
+      'Map does not spawn one actor per tile.',
+      'Rendering is chunked or batched and dirty chunks rebuild only when needed.',
+      'Large maps, optimized collision, runtime changes, scatter limits, and packaged performance are tested.',
+    ],
+  },
+  {
+    title: 'Error Handling',
+    items: [
+      'Missing tilesets, tile states, actor classes, layers, coordinates, profiles, and scatter rules fail safely.',
+      'Logs are useful without becoming spammy.',
+    ],
+  },
+  {
+    title: 'Documentation',
+    items: [
+      'Installation, quick start, tilesets, map editor, tile states, Tile Actors, collision, sorting, TFBiomes, TFDungeons, multiplayer, save/load, Blueprint API, troubleshooting, and example workflow guides exist.',
+      'Screenshot and GIF placeholders are replaced before release.',
+    ],
+  },
+  {
+    title: 'Sample Content',
+    items: [
+      'Top-down and isometric sample maps exist.',
+      'Examples cover grass-to-dirt, enterable holes, cuttable grass, push blocks, chests, biomes, and dungeons.',
+      'Sample content is clearly labeled and uses safe assets.',
+    ],
+  },
+  {
+    title: 'Marketplace / Release Prep',
+    items: [
+      'Descriptor, supported versions, dependencies, listing copy, screenshots, videos, demo, docs link, support link, license, changelog, package zip, and fresh install are ready.',
+    ],
+  },
+  {
+    title: 'Fresh Project QA',
+    items: [
+      'Install in a brand-new Unreal project.',
+      'Enable, restart, create tileset/map, paint, place map actor, PIE, package, and confirm no missing asset or editor-only runtime errors.',
+    ],
+  },
+  {
+    title: 'Required Post-Push QA Report',
+    items: [
+      'Every major push includes What’s New, What Changed, New Features to Test, Old Features to Retest, Regression Risks, relevant Multiplayer and Save/Load QA, files, build results, commit message, and next step.',
+      'Never claim anything was tested unless it actually was.',
+    ],
+  },
+];
+---
+
+<SiteLayout
+  title="TileForge2D QA Checklist | Arête Plugins"
+  description="TileForge2D production readiness and post-push QA checklist."
+>
+  <main>
+    <section class="shell hero qa-hero">
+      <div>
+        <p class="eyebrow">Under construction QA</p>
+        <h1>TileForge2D QA Checklist</h1>
+        <p class="lead">
+          A release-readiness tracker for TileForge2D while the editor, runtime, procedural systems,
+          sample content, documentation, and marketplace prep are being hardened.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="../">Back to TileForge2D</a>
+          <a class="button" href="../../">All Plugins</a>
+        </div>
+      </div>
+      <article class="qa-warning-card">
+        <p class="eyebrow">Construction Zone</p>
+        <h2>QA before polish.</h2>
+        <p>
+          This page is intentionally visible while TileForge2D is in active testing. Items move from
+          unchecked to verified only after real editor, runtime, packaged, multiplayer, or fresh-project tests.
+        </p>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Production readiness</p>
+            <h2>What needs to be true before release.</h2>
+          </div>
+          <p>Grouped from the current TileForge2D production checklist.</p>
+        </div>
+        <div class="qa-grid">
+          {qaSections.map((section, index) => (
+            <article class="qa-card">
+              <span class="qa-number">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{section.title}</h3>
+              <ul>
+                {section.items.map((item) => <li>{item}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</SiteLayout>
