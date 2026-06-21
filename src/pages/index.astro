@@ -27,6 +27,17 @@ const plugins = [
     repoHref: 'https://github.com/Snow-shino/TileForge2D',
     status: 'In development',
   },
+  {
+    name: 'SpriteSort2D',
+    label: 'Top-down 2D sprite sorting',
+    description:
+      'Sort Paper2D sprites, flipbooks, and primitive visuals by visual depth without moving collision or relying on translucent materials.',
+    icon: '/spritesort2d-mark.svg',
+    pluginHref: '/spritesort2d',
+    docsHref: '/spritesort2d',
+    repoHref: 'https://github.com/Snow-shino',
+    status: 'Free MVP',
+  },
 ];
 
 const chapters = [
@@ -74,6 +85,20 @@ const chapters = [
   },
   {
     number: '07',
+    title: 'SpriteSort2D Quick Start',
+    description: 'Add visual-depth sprite sorting to a Paper2D actor without hand-placing an origin first.',
+    href: '/spritesort2d#quick-start',
+    keywords: 'spritesort2d quick start visual depth sorting visualroot origin masked paper2d',
+  },
+  {
+    number: '08',
+    title: 'SpriteSort2D QA Checklist',
+    description: 'Verify collision safety, masked materials, update modes, and scale before release.',
+    href: '/spritesort2d#qa-checklist',
+    keywords: 'spritesort2d qa checklist collision materials performance shipping',
+  },
+  {
+    number: '09',
     title: 'Changelog',
     description: 'Review release notes and version history for Ase2UE.',
     href: '/docs/ase2ue/changelog',
@@ -112,7 +137,15 @@ const chapters = [
             <a class="mini-plugin" href={url(plugin.pluginHref)}>
               <img src={url(plugin.icon)} alt="" width="42" height="42" />
               <span>
-                <strong>{plugin.name === 'Ase2UE' ? <>Ase<span class="ase-two">2</span>UE</> : plugin.name}</strong>
+                <strong>
+                  {plugin.name === 'Ase2UE' ? (
+                    <>Ase<span class="ase-two">2</span>UE</>
+                  ) : plugin.name === 'SpriteSort2D' ? (
+                    <>Sprite<span class="sort-orange">Sort</span>2D</>
+                  ) : (
+                    plugin.name
+                  )}
+                </strong>
                 <small>{plugin.label}</small>
               </span>
             </a>
@@ -140,7 +173,15 @@ const chapters = [
                 <img src={url(plugin.icon)} alt="" width="58" height="58" />
                 <div>
                   <p class="eyebrow">{plugin.status}</p>
-                  <h3>{plugin.name === 'Ase2UE' ? <>Ase<span class="ase-two">2</span>UE</> : plugin.name}</h3>
+                  <h3>
+                    {plugin.name === 'Ase2UE' ? (
+                      <>Ase<span class="ase-two">2</span>UE</>
+                    ) : plugin.name === 'SpriteSort2D' ? (
+                      <>Sprite<span class="sort-orange">Sort</span>2D</>
+                    ) : (
+                      plugin.name
+                    )}
+                  </h3>
                 </div>
               </div>
               <p>{plugin.description}</p>
@@ -208,9 +249,9 @@ const chapters = [
             <p class="eyebrow">Direct Links</p>
             <h2>Review-safe plugin paths.</h2>
           </div>
-          <p>Ase2UE keeps its existing docs URL while TileForge2D lives beside it as a separate plugin section.</p>
+          <p>Ase2UE keeps its existing docs URL while TileForge2D and SpriteSort2D live beside it as separate plugin sections.</p>
         </div>
-        <div class="grid two">
+        <div class="grid">
           <article class="card">
             <h3>Ase<span class="ase-two">2</span>UE</h3>
             <p>The review docs path remains unchanged.</p>
@@ -220,6 +261,11 @@ const chapters = [
             <h3>TileForge2D</h3>
             <p>TileForge2D has its own docs section on the same site.</p>
             <p><a href={url('/docs/tileforge2d')}>/docs/tileforge2d/</a></p>
+          </article>
+          <article class="card">
+            <h3>Sprite<span class="sort-orange">Sort</span>2D</h3>
+            <p>SpriteSort2D has a searchable setup and QA page.</p>
+            <p><a href={url('/spritesort2d')}>/spritesort2d/</a></p>
           </article>
         </div>
       </div>

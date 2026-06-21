@@ -1,0 +1,680 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
+
+const docs = [
+  {
+    number: '01',
+    title: 'Install',
+    description: 'Copy the plugin, enable Paper2D, and confirm SpriteSort2D is loaded.',
+    href: '#install',
+    keywords: 'install copy plugin folder enable paper2d unreal engine project plugins',
+  },
+  {
+    number: '02',
+    title: 'Quick Start',
+    description: 'Add one component and use the default Auto setup first.',
+    href: '#quick-start',
+    keywords: 'quick start setup component auto origin visual root paper2d sprite flipbook',
+  },
+  {
+    number: '03',
+    title: 'How It Works',
+    description: 'Sort by a base point, then move only the visual component.',
+    href: '#how-it-works',
+    keywords: 'how it works sort origin base point depth offset visualroot collision gameplay transform',
+  },
+  {
+    number: '04',
+    title: 'Actor Setup',
+    description: 'Recommended hierarchies for players, NPCs, trees, grass, fences, and props.',
+    href: '#actor-setup',
+    keywords: 'player npc tree grass fence prop hierarchy visualroot collision sort origin',
+  },
+  {
+    number: '05',
+    title: 'Origin Modes',
+    description: 'Choose Auto, explicit origin, actor offset, visual bounds, or target bounds.',
+    href: '#origin-modes',
+    keywords: 'origin mode auto explicit actor offset visual bounds target bounds base axis',
+  },
+  {
+    number: '06',
+    title: 'Settings Reference',
+    description: 'Understand every important component setting before shipping.',
+    href: '#settings-reference',
+    keywords: 'settings sort axis camera depth axis depth scale invert movement threshold tick interval',
+  },
+  {
+    number: '07',
+    title: 'Blueprint Use',
+    description: 'Manual updates, enabling, disabling, changing origins, and reading debug values.',
+    href: '#blueprint-use',
+    keywords: 'blueprint update sort now set sorting enabled visual root sort origin offset get current value',
+  },
+  {
+    number: '08',
+    title: 'Materials',
+    description: 'Masked materials are the main path; translucent priority is fallback-only.',
+    href: '#materials',
+    keywords: 'materials masked unlit lit opaque translucent priority fallback paper2d',
+  },
+  {
+    number: '09',
+    title: 'Performance',
+    description: 'Pick update modes and thresholds for full-game scenes.',
+    href: '#performance',
+    keywords: 'performance update mode begin play when moved every tick manual threshold interval static props moving actors',
+  },
+  {
+    number: '10',
+    title: 'Troubleshooting',
+    description: 'Fix reversed sorting, bad origins, collision movement, and large offsets.',
+    href: '#troubleshooting',
+    keywords: 'troubleshooting reversed sorting collision wrong visualroot origin depthscale axis warnings',
+  },
+  {
+    number: '11',
+    title: 'QA Checklist',
+    description: 'Run release checks for gameplay safety, materials, scale, and packaging.',
+    href: '#qa-checklist',
+    keywords: 'qa checklist testing collision masked material warning shipping development editor',
+  },
+  {
+    number: '12',
+    title: 'Roadmap',
+    description: 'Focused TODO list and what is intentionally not part of the MVP.',
+    href: '#roadmap',
+    keywords: 'todo roadmap tileforge2d demo tests automation release not planned',
+  },
+];
+---
+
+<SiteLayout
+  title="SpriteSort2D | Arete Plugins"
+  description="SpriteSort2D is a free Unreal Engine plugin for masked-material-compatible top-down 2D sprite sorting."
+>
+  <main>
+    <section class="shell hero">
+      <div>
+        <p class="eyebrow">Masked-compatible 2D sorting</p>
+        <h1>Sprite<span class="sort-orange">Sort</span>2D</h1>
+        <p class="lead">
+          SpriteSort2D fixes top-down sprite sorting by sorting from a feet/base point and moving only the visual component.
+          It does not move the actor root, collision, traces, AI location, navigation, or saved gameplay transform.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="#quick-start">Start Setup</a>
+          <a class="button" href="#settings-reference">Settings</a>
+          <a class="button" href="#qa-checklist">QA Checklist</a>
+        </div>
+      </div>
+      <article class="terminal-card">
+        <div class="terminal-header">
+          <span>spritesort2d</span>
+          <span>visual depth</span>
+        </div>
+        <pre class="terminal-body"><code>base point
+  -> SortAxis projection
+  -> DepthScale
+  -> CameraDepthAxis offset
+  -> VisualRoot only</code></pre>
+      </article>
+    </section>
+
+    <section class="section docs-directory">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Documentation</p>
+            <h2>Search Sprite<span class="sort-orange">Sort</span>2D docs.</h2>
+          </div>
+          <p>Search setup, origins, axes, materials, Blueprint calls, performance, and QA.</p>
+        </div>
+
+        <div class="docs-panel docs-search-panel" aria-label="SpriteSort2D documentation search">
+          <div class="docs-panel-head">
+            <img src={url('/spritesort2d-mark.svg')} alt="" width="42" height="42" />
+            <div>
+              <h2>Find Instructions</h2>
+              <p>Use plain terms like VisualRoot, grass, collision, masked, axis, origin, or performance.</p>
+            </div>
+          </div>
+          <div class="search-box">
+            <label for="spritesort-search">Search documentation</label>
+            <input
+              id="spritesort-search"
+              type="search"
+              placeholder="Search: VisualRoot, tall grass, collision, masked, performance..."
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <div class="chapter-grid" id="spritesort-chapter-grid">
+          {docs.map((doc) => (
+            <a
+              class="chapter-card"
+              href={doc.href}
+              data-search={`${doc.title} ${doc.description} ${doc.keywords}`.toLowerCase()}
+            >
+              <span>{doc.number}</span>
+              <strong>{doc.title}</strong>
+              <small>{doc.description}</small>
+            </a>
+          ))}
+        </div>
+        <p class="no-results" id="spritesort-no-results" hidden>No matching SpriteSort2D sections.</p>
+      </div>
+    </section>
+
+    <section class="section" id="install">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Install</p>
+            <h2>Add the plugin to a project.</h2>
+          </div>
+          <p>SpriteSort2D is a C++ Unreal Engine plugin. Test it in a clean project before using it in production.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>1. Copy the folder</h3>
+            <p>Place the <code>SpriteSort2D</code> folder in your project&apos;s <code>Plugins</code> folder.</p>
+          </article>
+          <article class="card">
+            <h3>2. Enable dependencies</h3>
+            <p>Enable <code>Paper2D</code> if your project uses Paper sprites or flipbooks. The plugin declares Paper2D as a dependency.</p>
+          </article>
+          <article class="card">
+            <h3>3. Rebuild or reopen</h3>
+            <p>Rebuild the project if prompted, then confirm <code>Sprite Sort Component</code> appears in the Blueprint component picker.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="quick-start">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Quick Start</p>
+            <h2>Use Auto first.</h2>
+          </div>
+          <p>Do not start by hand-tuning everything. First prove the default setup works in your camera view.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>1. Add the component</h3>
+            <p>Add <code>Sprite Sort Component</code> to a PaperSprite, PaperFlipbook, character, NPC, or prop actor.</p>
+          </article>
+          <article class="card">
+            <h3>2. Leave defaults</h3>
+            <p>Use <code>OriginMode: Auto</code>, <code>SortingMode: Visual Depth Offset</code>, and <code>UpdateMode: When Moved</code>.</p>
+          </article>
+          <article class="card">
+            <h3>3. Test crossing</h3>
+            <p>Walk the player above and below a tree or wall. If order is reversed, enable <code>bInvertSort</code>.</p>
+          </article>
+        </div>
+        <div class="grid two qa-note">
+          <article class="card">
+            <h3>When Auto is enough</h3>
+            <p>Auto is usually enough for normal characters, props, rocks, signs, simple trees, and sprites with reasonable bounds.</p>
+          </article>
+          <article class="card">
+            <h3>When to add an origin</h3>
+            <p>Add a <code>Sprite Sort Origin</code> for tall trees, grass overlays, large sprites with empty padding, or art that needs exact feet/base control.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how-it-works">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">How It Works</p>
+            <h2>The actor does not move.</h2>
+          </div>
+          <p>The plugin calculates a render-depth offset and applies it only to <code>VisualRoot</code>.</p>
+        </div>
+        <div class="grid two">
+          <article class="terminal-card">
+            <div class="terminal-header">
+              <span>formula</span>
+              <span>runtime</span>
+            </div>
+            <pre class="terminal-body"><code>SortWorldLocation = base/origin
+SortValue = Dot(SortWorldLocation, SortAxis)
+DepthOffset = CameraDepthAxis * SortValue * DepthScale
+VisualRoot = OriginalVisualRoot + DepthOffset</code></pre>
+          </article>
+          <article class="card">
+            <h3>What stays fixed</h3>
+            <ul>
+              <li>Actor root transform.</li>
+              <li>Capsule, box, or custom collision.</li>
+              <li>AI and navigation location.</li>
+              <li>Gameplay traces and hitboxes.</li>
+              <li>Saved actor transform.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="actor-setup">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Actor Setup</p>
+            <h2>Keep collision outside VisualRoot.</h2>
+          </div>
+          <p><code>VisualRoot</code> is the only component that should receive the visual offset.</p>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <h3>Player or NPC</h3>
+            <pre class="terminal-body"><code>BP_Player
+|-- CapsuleComponent
+|-- VisualRoot
+|   `-- PaperFlipbookComponent
+|-- SortOriginFeet (optional)
+`-- SpriteSortComponent</code></pre>
+          </article>
+          <article class="card">
+            <h3>Tree or Prop</h3>
+            <pre class="terminal-body"><code>BP_Tree
+|-- SceneRoot
+|-- VisualRoot
+|   `-- PaperSpriteComponent
+|-- SortOriginTrunkBase (optional)
+`-- SpriteSortComponent</code></pre>
+          </article>
+          <article class="card">
+            <h3>Tall Grass</h3>
+            <pre class="terminal-body"><code>BP_TallGrass
+|-- SceneRoot
+|-- GroundPatchSprite
+|-- VisualRoot
+|   `-- GrassBladeSprite
+|-- SortOriginGrassBase
+`-- SpriteSortComponent</code></pre>
+          </article>
+          <article class="card">
+            <h3>Fence or Wall</h3>
+            <pre class="terminal-body"><code>BP_Fence
+|-- SceneRoot
+|-- Collision
+|-- VisualRoot
+|   `-- FenceSprite
+|-- SortOriginFenceBase (optional)
+`-- SpriteSortComponent</code></pre>
+          </article>
+        </div>
+        <div class="grid two qa-note">
+          <article class="card">
+            <h3>Do</h3>
+            <p>Put sprites, flipbooks, mesh visuals, and overlay art under <code>VisualRoot</code>.</p>
+          </article>
+          <article class="card">
+            <h3>Do not</h3>
+            <p>Put collision or <code>Sprite Sort Origin</code> under <code>VisualRoot</code>. The plugin warns about this because it makes sorting harder to reason about.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="origin-modes">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Origin Modes</p>
+            <h2>Choose where the base point comes from.</h2>
+          </div>
+          <p>Most beginners should use <code>Auto</code>. Advanced users can force exact behavior.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>Auto</h3>
+            <p>Uses assigned <code>SortOrigin</code>, then visual bounds base, then target bounds base, then actor location plus offset.</p>
+          </article>
+          <article class="card">
+            <h3>Explicit Sort Origin</h3>
+            <p>Uses the assigned <code>Sprite Sort Origin</code>. Best for tall trees, bosses, grass overlays, and exact artist control.</p>
+          </article>
+          <article class="card">
+            <h3>Actor Location + Offset</h3>
+            <p>Uses actor location plus <code>SortOffset</code>. Useful when pivots are already placed at feet/base.</p>
+          </article>
+          <article class="card">
+            <h3>Visual Bounds Base</h3>
+            <p>Calculates the base of visuals under <code>VisualRoot</code>. This is stable across repeated updates.</p>
+          </article>
+          <article class="card">
+            <h3>Target Bounds Base</h3>
+            <p>Calculates the base of <code>TargetPrimitive</code>. Useful when fallback/target selection should define the sort base.</p>
+          </article>
+          <article class="card">
+            <h3>BoundsBaseAxis</h3>
+            <p>Controls which direction is treated as sprite height. In many top-down Paper2D projects this is world Z.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="settings-reference">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Settings Reference</p>
+            <h2>What each setting means.</h2>
+          </div>
+          <p>Set project-wide defaults under <code>Project Settings -> Plugins -> Sprite Sort 2D</code>.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>VisualRoot</h3>
+            <p>The scene component that receives the visual offset. If empty, SpriteSort2D tries to auto-find it.</p>
+          </article>
+          <article class="card">
+            <h3>TargetPrimitive</h3>
+            <p>The primitive used by fallback logic. It can be auto-found from Paper2D or primitive visual components.</p>
+          </article>
+          <article class="card">
+            <h3>SortAxis</h3>
+            <p>The world direction used to calculate order. If sorting is backwards, try <code>bInvertSort</code> first.</p>
+          </article>
+          <article class="card">
+            <h3>CameraDepthAxis</h3>
+            <p>The direction visuals move for depth sorting. Match this to your camera/depth setup.</p>
+          </article>
+          <article class="card">
+            <h3>DepthScale</h3>
+            <p>Controls how far visuals move. If sprites visibly slide too much, lower it.</p>
+          </article>
+          <article class="card">
+            <h3>bInvertSort</h3>
+            <p>Flips sort order without changing axis values. This is the fastest fix for reversed sorting.</p>
+          </article>
+          <article class="card">
+            <h3>SortingMode</h3>
+            <p>Use <code>Visual Depth Offset</code> for normal work. <code>Translucent Priority Fallback</code> is only for special cases.</p>
+          </article>
+          <article class="card">
+            <h3>UpdateMode</h3>
+            <p>Controls when sorting updates. Use static modes for props and movement-based modes for characters.</p>
+          </article>
+          <article class="card">
+            <h3>bDebugDraw</h3>
+            <p>Draws the origin, offset line, sort value, update mode, and visual root name. Disable it for real gameplay tests.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="blueprint-use">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Blueprint Use</p>
+            <h2>Useful calls.</h2>
+          </div>
+          <p>Most projects need no Blueprint calls. These are available for custom systems.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>UpdateSortNow</h3>
+            <p>Force an immediate update. Use with <code>Manual</code> update mode or after procedural setup.</p>
+          </article>
+          <article class="card">
+            <h3>SetSortingEnabled</h3>
+            <p>Enable or disable sorting. Disabling restores the original visual transform.</p>
+          </article>
+          <article class="card">
+            <h3>SetVisualRoot</h3>
+            <p>Assign the visual root at runtime, then the component caches its original transform.</p>
+          </article>
+          <article class="card">
+            <h3>SetSortOrigin</h3>
+            <p>Assign an explicit origin component, usually at feet/base.</p>
+          </article>
+          <article class="card">
+            <h3>SetSortOffset</h3>
+            <p>Adjust the actor-location fallback point without adding an origin component.</p>
+          </article>
+          <article class="card">
+            <h3>GetCurrentSortValue</h3>
+            <p>Read the current projected sort value for debugging or custom UI.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="materials">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Materials</p>
+            <h2>Masked is the main path.</h2>
+          </div>
+          <p>The plugin exists so top-down sorting does not require translucent materials as the default answer.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>Recommended</h3>
+            <p>Use masked unlit materials for simple Paper2D projects. Use masked lit materials when your lighting setup supports them.</p>
+          </article>
+          <article class="card">
+            <h3>Also possible</h3>
+            <p>Opaque materials can work when the visual-depth offset is appropriate for the camera and asset shape.</p>
+          </article>
+          <article class="card">
+            <h3>Fallback only</h3>
+            <p><code>Translucent Priority Fallback</code> exists for special cases. It is not the recommended main workflow.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="performance">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Performance</p>
+            <h2>Choose the cheapest update mode.</h2>
+          </div>
+          <p>For full games, update policy matters more than micro-optimizing the formula.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>On Begin Play Only</h3>
+            <p>Use for trees, rocks, signs, fences, walls, and static props. No continuous updates.</p>
+          </article>
+          <article class="card">
+            <h3>When Moved</h3>
+            <p>Default for players, NPCs, and moving props. Updates only after movement exceeds <code>MovementThreshold</code>.</p>
+          </article>
+          <article class="card">
+            <h3>Every Tick</h3>
+            <p>Use for prototypes or unusual camera setups. Do not use by default for large crowds.</p>
+          </article>
+          <article class="card">
+            <h3>Manual</h3>
+            <p>Use when another system knows exactly when sorting should update.</p>
+          </article>
+          <article class="card">
+            <h3>MovementThreshold</h3>
+            <p>Increase this to prevent tiny movement changes from triggering updates.</p>
+          </article>
+          <article class="card">
+            <h3>WhenMovedTickInterval</h3>
+            <p>Set above zero to throttle movement checks in large maps or crowds.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="troubleshooting">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Troubleshooting</p>
+            <h2>Common fixes.</h2>
+          </div>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>Sorting is reversed</h3>
+            <p>Enable <code>bInvertSort</code>. If that fixes it, keep the setting instead of changing multiple axes.</p>
+          </article>
+          <article class="card">
+            <h3>Sprite moves too far</h3>
+            <p>Lower <code>DepthScale</code>. Try <code>0.005</code> or <code>0.001</code>.</p>
+          </article>
+          <article class="card">
+            <h3>Collision feels wrong</h3>
+            <p>Collision is probably under <code>VisualRoot</code>. Move collision outside <code>VisualRoot</code>.</p>
+          </article>
+          <article class="card">
+            <h3>Origin seems unstable</h3>
+            <p>Make sure <code>Sprite Sort Origin</code> is not attached under <code>VisualRoot</code>.</p>
+          </article>
+          <article class="card">
+            <h3>Nothing sorts</h3>
+            <p>Check <code>VisualRoot</code>, <code>SortAxis</code>, <code>CameraDepthAxis</code>, and whether sorting is enabled.</p>
+          </article>
+          <article class="card">
+            <h3>Player always renders in front</h3>
+            <p>Confirm all sortable actors use the same axis setup and comparable sort origin/base positions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="qa-checklist">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">QA Checklist</p>
+            <h2>Release gates.</h2>
+          </div>
+          <p>These checks catch most mistakes before users do.</p>
+        </div>
+        <div class="qa-grid">
+          <article class="qa-card">
+            <span class="qa-number">01</span>
+            <h3>Gameplay Safety</h3>
+            <ul>
+              <li>Actor root location does not change.</li>
+              <li>Collision component location does not change.</li>
+              <li>Gameplay traces hit collision, not visual offset.</li>
+              <li>Disabling sorting restores the original visual transform.</li>
+            </ul>
+          </article>
+          <article class="qa-card">
+            <span class="qa-number">02</span>
+            <h3>Sorting Scenarios</h3>
+            <ul>
+              <li>Player below tree renders in front.</li>
+              <li>Player behind tree renders behind.</li>
+              <li>Tall grass can cover the player when intended.</li>
+              <li>Moving NPCs sort against static props.</li>
+            </ul>
+          </article>
+          <article class="qa-card">
+            <span class="qa-number">03</span>
+            <h3>Material Coverage</h3>
+            <ul>
+              <li>Masked unlit sprite material works.</li>
+              <li>Masked lit sprite material remains compatible.</li>
+              <li>Translucent fallback is tested only as fallback.</li>
+            </ul>
+          </article>
+          <article class="qa-card">
+            <span class="qa-number">04</span>
+            <h3>Scale</h3>
+            <ul>
+              <li>100 static props using <code>On Begin Play Only</code>.</li>
+              <li>100 moving actors using <code>When Moved</code>.</li>
+              <li>500 mixed simple props with debug drawing disabled.</li>
+            </ul>
+          </article>
+          <article class="qa-card">
+            <span class="qa-number">05</span>
+            <h3>Bad Setup Warnings</h3>
+            <ul>
+              <li>Missing <code>VisualRoot</code> warning is clear.</li>
+              <li>Zero axis warnings are clear.</li>
+              <li>Collision under <code>VisualRoot</code> warning is clear.</li>
+              <li>Origin under <code>VisualRoot</code> warning is clear.</li>
+            </ul>
+          </article>
+          <article class="qa-card">
+            <span class="qa-number">06</span>
+            <h3>Packaging</h3>
+            <ul>
+              <li>UE 5.5 Editor, Development, and Shipping builds.</li>
+              <li>UE 5.6 Editor, Development, and Shipping builds.</li>
+              <li>Clean project install from packaged zip.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="roadmap">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Roadmap</p>
+            <h2>Keep the plugin focused.</h2>
+          </div>
+          <p>SpriteSort2D should remain a sorting utility, not a full 2D framework.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>Before public release</h3>
+            <p>Create a demo map, screenshots or GIF, UE version verification, and a clean Blueprint-only project test.</p>
+          </article>
+          <article class="card">
+            <h3>Short term</h3>
+            <p>Add automated transform preservation tests and sample masked materials.</p>
+          </article>
+          <article class="card">
+            <h3>Later</h3>
+            <p>Add TileForge2D metadata integration only after TileForge2D is ready for sortable actor generation.</p>
+          </article>
+          <article class="card">
+            <h3>Not planned for MVP</h3>
+            <p>No tilemap editing, no Aseprite import, no Paper2D replacement, and no forced translucent-material workflow.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const input = document.getElementById('spritesort-search') as HTMLInputElement | null;
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('#spritesort-chapter-grid [data-search]'));
+    const noResults = document.getElementById('spritesort-no-results');
+
+    input?.addEventListener('input', () => {
+      const query = input.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      for (const card of cards) {
+        const matches = !query || card.dataset.search?.includes(query);
+        card.toggleAttribute('hidden', !matches);
+        if (matches) visibleCount += 1;
+      }
+
+      if (noResults) {
+        noResults.hidden = visibleCount > 0;
+      }
+    });
+  </script>
+</SiteLayout>

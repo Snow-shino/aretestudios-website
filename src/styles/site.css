@@ -218,6 +218,11 @@ h3 {
   color: #13f0d2;
 }
 
+.sort-orange {
+  color: #ff7a1a;
+  text-shadow: 0 0 16px rgba(255, 122, 26, 0.38);
+}
+
 .docs-panel {
   border: 1px solid var(--line);
   border-radius: 8px;

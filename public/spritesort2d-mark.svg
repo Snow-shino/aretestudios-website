@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="SpriteSort2D">
+  <rect width="128" height="128" rx="20" fill="#0d0d0f"/>
+  <path d="M28 86h48v14H28z" fill="#ff7a1a"/>
+  <path d="M44 58h48v14H44z" fill="#13f0d2"/>
+  <path d="M60 30h48v14H60z" fill="#fff7ef"/>
+  <path d="M31 83 76 38" stroke="#fff7ef" stroke-width="6" stroke-linecap="round" opacity=".65"/>
+  <circle cx="28" cy="93" r="8" fill="#ffb36d"/>
+  <circle cx="44" cy="65" r="8" fill="#8ffcf0"/>
+  <circle cx="60" cy="37" r="8" fill="#fff7ef"/>
+</svg>
