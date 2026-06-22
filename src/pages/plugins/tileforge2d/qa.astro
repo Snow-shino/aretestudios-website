@@ -1,5 +1,6 @@
 ---
 import SiteLayout from '../../../layouts/SiteLayout.astro';
+import TileForgeWord from '../../../components/TileForgeWord.astro';
 
 const qaSections = [
   {
@@ -204,13 +205,13 @@ const proceduralSteps = [
     <section class="shell hero qa-hero">
       <div>
         <p class="eyebrow">Under construction QA</p>
-        <h1>TileForge2D QA Checklist</h1>
+        <h1><TileForgeWord /> QA Checklist</h1>
         <p class="lead">
-          A release-readiness tracker for TileForge2D while the editor, runtime, procedural systems,
+          A release-readiness tracker for <TileForgeWord /> while the editor, runtime, procedural systems,
           sample content, documentation, and marketplace prep are being hardened.
         </p>
         <div class="actions">
-          <a class="button primary" href="../">Back to TileForge2D</a>
+          <a class="button primary" href="../">Back to <TileForgeWord /></a>
           <a class="button" href="../../">All Plugins</a>
         </div>
       </div>
@@ -218,7 +219,7 @@ const proceduralSteps = [
         <p class="eyebrow">Construction Zone</p>
         <h2>QA before polish.</h2>
         <p>
-          This page is intentionally visible while TileForge2D is in active testing. Items move from
+          This page is intentionally visible while <TileForgeWord /> is in active testing. Items move from
           unchecked to verified only after real editor, runtime, packaged, multiplayer, or fresh-project tests.
         </p>
       </article>
@@ -262,7 +263,7 @@ const proceduralSteps = [
             <p class="eyebrow">Production readiness</p>
             <h2>What needs to be true before release.</h2>
           </div>
-          <p>Grouped from the current TileForge2D production checklist.</p>
+          <p>Grouped from the current <TileForgeWord /> production checklist.</p>
         </div>
         <div class="qa-grid">
           {qaSections.map((section, index) => (

@@ -9,6 +9,7 @@
   --accent: #ff7a1a;
   --accent-2: #ffb36d;
   --danger: #ff4f4f;
+  --tileforge-red: #ff174f;
   --max: 1160px;
 }
 
@@ -84,6 +85,17 @@ a {
 
 .nav a:hover {
   color: var(--text);
+}
+
+.tileforge-word {
+  white-space: nowrap;
+}
+
+.tileforge-forge {
+  color: var(--tileforge-red);
+  text-shadow:
+    0 0 7px rgba(255, 23, 79, 0.82),
+    0 0 18px rgba(255, 23, 79, 0.48);
 }
 
 .hero {

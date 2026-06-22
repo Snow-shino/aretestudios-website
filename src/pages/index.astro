@@ -1,5 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+import TileForgeWord from '../components/TileForgeWord.astro';
 
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
@@ -118,7 +119,7 @@ const chapters = [
         <h1>Unreal Engine tools for 2D creators.</h1>
         <p class="lead">
           A focused plugin hub for artists, solo developers, and small teams building 2D games in Unreal Engine.
-          Start with Ase2UE for art import workflows, then use TileForge2D for game-ready maps.
+          Start with Ase2UE for art import workflows, then use <TileForgeWord /> for game-ready maps.
         </p>
         <div class="actions">
           <a class="button primary" href={url('/plugins')}>Browse Plugins</a>
@@ -143,7 +144,7 @@ const chapters = [
                   ) : plugin.name === 'SpriteSort2D' ? (
                     <>Sprite<span class="sort-orange">Sort</span>2D</>
                   ) : (
-                    plugin.name
+                    <TileForgeWord />
                   )}
                 </strong>
                 <small>{plugin.label}</small>
@@ -179,7 +180,7 @@ const chapters = [
                     ) : plugin.name === 'SpriteSort2D' ? (
                       <>Sprite<span class="sort-orange">Sort</span>2D</>
                     ) : (
-                      plugin.name
+                      <TileForgeWord />
                     )}
                   </h3>
                 </div>
@@ -233,7 +234,7 @@ const chapters = [
               data-search={`${chapter.title} ${chapter.description} ${chapter.keywords}`.toLowerCase()}
             >
               <span>{chapter.number}</span>
-              <strong>{chapter.title}</strong>
+              <strong>{chapter.title === 'TileForge2D Quick Start' ? <><TileForgeWord /> Quick Start</> : chapter.title}</strong>
               <small>{chapter.description}</small>
             </a>
           ))}
@@ -249,7 +250,7 @@ const chapters = [
             <p class="eyebrow">Direct Links</p>
             <h2>Review-safe plugin paths.</h2>
           </div>
-          <p>Ase2UE keeps its existing docs URL while TileForge2D and SpriteSort2D live beside it as separate plugin sections.</p>
+          <p>Ase2UE keeps its existing docs URL while <TileForgeWord /> and Sprite<span class="sort-orange">Sort</span>2D live beside it as separate plugin sections.</p>
         </div>
         <div class="grid">
           <article class="card">
@@ -258,8 +259,8 @@ const chapters = [
             <p><a href={url('/docs/ase2ue')}>/docs/ase2ue/</a></p>
           </article>
           <article class="card">
-            <h3>TileForge2D</h3>
-            <p>TileForge2D has its own docs section on the same site.</p>
+            <h3><TileForgeWord /></h3>
+            <p><TileForgeWord /> has its own docs section on the same site.</p>
             <p><a href={url('/docs/tileforge2d')}>/docs/tileforge2d/</a></p>
           </article>
           <article class="card">

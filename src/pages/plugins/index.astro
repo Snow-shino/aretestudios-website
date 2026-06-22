@@ -1,5 +1,6 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro';
+import TileForgeWord from '../../components/TileForgeWord.astro';
 
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
@@ -49,7 +50,7 @@ category:
         <div class="plugin-row">
           <img src={url('/tileforge2d-mark.svg')} alt="" width="58" height="58" />
           <div>
-            <h2>TileForge2D</h2>
+            <h2><TileForgeWord /></h2>
             <p>Build game-ready 2D maps in Unreal with tilesets, layers, collision, Tile Actors, projection modes, and Blueprint hooks.</p>
           </div>
           <a class="button primary" href={url('/plugins/tileforge2d')}>Open</a>
