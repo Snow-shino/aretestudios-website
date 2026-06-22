@@ -281,7 +281,7 @@ h3 {
   height: 42px;
 }
 
-.mini-plugin span {
+.mini-plugin > span {
   display: grid;
   gap: 2px;
 }
