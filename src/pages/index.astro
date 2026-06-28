@@ -29,6 +29,17 @@ const plugins = [
     status: 'In development',
   },
   {
+    name: 'DayNight2D',
+    label: 'World time and schedules',
+    description:
+      'Add Blueprint-friendly time, calendar, schedules, routines, timed behavior, optional day/night visuals, and multiplayer-aware world timing.',
+    icon: '/daynight2d-mark.svg',
+    pluginHref: '/plugins/daynight2d',
+    docsHref: '/docs/daynight2d',
+    repoHref: 'https://github.com/Snow-shino/DayNight2D',
+    status: 'Foundation QA',
+  },
+  {
     name: 'SpriteSort2D',
     label: 'Top-down 2D sprite sorting',
     description:
@@ -38,6 +49,17 @@ const plugins = [
     docsHref: '/spritesort2d',
     repoHref: 'https://github.com/Snow-shino',
     status: 'Free MVP',
+  },
+  {
+    name: 'FlipbookWidget',
+    label: 'Paper2D animation for UMG',
+    description:
+      'Display and control Paper2D flipbooks directly in UMG with Blueprint playback, sizing, tint, color variation, and events.',
+    icon: '/flipbookwidget-icon.png',
+    pluginHref: '/FlipbookWidget',
+    docsHref: '/FlipbookWidget/how-to',
+    repoHref: 'https://github.com/Snow-shino',
+    status: 'Fab ready',
   },
 ];
 
@@ -72,38 +94,66 @@ const chapters = [
   },
   {
     number: '05',
+    title: 'DayNight2D Getting Started',
+    description: 'Create settings, start world time, and wire Blueprint systems to time events.',
+    href: '/docs/daynight2d/getting-started',
+    keywords: 'daynight2d time calendar schedule blueprint settings events',
+  },
+  {
+    number: '06',
+    title: 'DayNight2D Blueprint API',
+    description: 'Review Blueprint nodes for time, dates, schedules, routines, timed behavior, save/load, and replication.',
+    href: '/docs/daynight2d/blueprint-api',
+    keywords: 'daynight2d blueprint api nodes schedule routine save load multiplayer',
+  },
+  {
+    number: '07',
     title: 'Ase2UE Hitboxes, Hurtboxes & Sockets',
     description: 'Create marker layers for SOCKET_, HIT_, and HURT_ workflows in Paper2D.',
     href: '/docs/ase2ue/hitboxes-hurtboxes-sockets',
     keywords: 'socket sockets hitbox hurtbox marker layer weapon hand trace paper sprite',
   },
   {
-    number: '06',
+    number: '08',
     title: 'FAQ & Troubleshooting',
     description: 'Fix common setup, Aseprite path, file picker, flipbook, marker, and socket issues.',
     href: '/docs/ase2ue/faq',
     keywords: 'faq troubleshooting errors warnings aseprite path sockets flipbooks file picker',
   },
   {
-    number: '07',
+    number: '09',
     title: 'SpriteSort2D Quick Start',
     description: 'Add visual-depth sprite sorting to a Paper2D actor without hand-placing an origin first.',
     href: '/spritesort2d#quick-start',
     keywords: 'spritesort2d quick start visual depth sorting visualroot origin masked paper2d',
   },
   {
-    number: '08',
+    number: '10',
     title: 'SpriteSort2D QA Checklist',
     description: 'Verify collision safety, masked materials, update modes, and scale before release.',
     href: '/spritesort2d#qa-checklist',
     keywords: 'spritesort2d qa checklist collision materials performance shipping',
   },
   {
-    number: '09',
+    number: '11',
     title: 'Changelog',
     description: 'Review release notes and version history for Ase2UE.',
     href: '/docs/ase2ue/changelog',
     keywords: 'changelog release notes version history updates',
+  },
+  {
+    number: '12',
+    title: 'FlipbookWidget How To',
+    description: 'Install the plugin, add the widget to UMG, assign a PaperFlipbook, and control playback.',
+    href: '/FlipbookWidget/how-to',
+    keywords: 'flipbook widget paper2d umg install setup playback animated ui',
+  },
+  {
+    number: '13',
+    title: 'FlipbookWidget Blueprint API',
+    description: 'Review playback, frame, sizing, tint, variation, and event controls.',
+    href: '/FlipbookWidget/blueprint-api',
+    keywords: 'flipbook widget blueprint api play pause tint frame events sizing',
   },
 ];
 ---
@@ -143,6 +193,8 @@ const chapters = [
                     <>Ase<span class="ase-two">2</span>UE</>
                   ) : plugin.name === 'SpriteSort2D' ? (
                     <>Sprite<span class="sort-orange">Sort</span>2D</>
+                  ) : plugin.name === 'FlipbookWidget' ? (
+                    <><span class="flipbook-neon">Flipbook</span>Widget</>
                   ) : (
                     <TileForgeWord />
                   )}
@@ -179,6 +231,8 @@ const chapters = [
                       <>Ase<span class="ase-two">2</span>UE</>
                     ) : plugin.name === 'SpriteSort2D' ? (
                       <>Sprite<span class="sort-orange">Sort</span>2D</>
+                    ) : plugin.name === 'FlipbookWidget' ? (
+                      <><span class="flipbook-neon">Flipbook</span>Widget</>
                     ) : (
                       <TileForgeWord />
                     )}
@@ -267,6 +321,11 @@ const chapters = [
             <h3>Sprite<span class="sort-orange">Sort</span>2D</h3>
             <p>SpriteSort2D has a searchable setup and QA page.</p>
             <p><a href={url('/spritesort2d')}>/spritesort2d/</a></p>
+          </article>
+          <article class="card">
+            <h3><span class="flipbook-neon">Flipbook</span>Widget</h3>
+            <p>Arete Flipbook Widgets has dedicated setup, Blueprint API, and troubleshooting guides.</p>
+            <p><a href={url('/FlipbookWidget')}>/FlipbookWidget/</a></p>
           </article>
         </div>
       </div>

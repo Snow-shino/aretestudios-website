@@ -25,15 +25,19 @@ const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
           <span>catalog</span>
           <span>v1</span>
         </div>
-        <pre class="terminal-body"><code>available:
+<pre class="terminal-body"><code>available:
   - Ase2UE
   - TileForge2D
+  - DayNight2D
+  - FlipbookWidget
 
 category:
   - 2D
   - Paper2D
   - Aseprite workflow
-  - Tile map workflow</code></pre>
+  - Tile map workflow
+  - World timing
+  - Animated UMG</code></pre>
       </article>
     </section>
 
@@ -54,6 +58,22 @@ category:
             <p>Build game-ready 2D maps in Unreal with tilesets, layers, collision, Tile Actors, projection modes, and Blueprint hooks.</p>
           </div>
           <a class="button primary" href={url('/plugins/tileforge2d')}>Open</a>
+        </div>
+        <div class="plugin-row">
+          <img src={url('/daynight2d-mark.svg')} alt="" width="58" height="58" />
+          <div>
+            <h2>DayNight2D</h2>
+            <p>Use Blueprint-friendly world time, calendars, schedules, routines, timed behaviors, day/night visuals, and multiplayer-aware timing.</p>
+          </div>
+          <a class="button primary" href={url('/plugins/daynight2d')}>Open</a>
+        </div>
+        <div class="plugin-row">
+          <img src={url('/flipbookwidget-icon.png')} alt="" width="58" height="58" />
+          <div>
+            <h2><span class="flipbook-neon">Flipbook</span>Widget</h2>
+            <p>Display and control Paper2D flipbooks directly in UMG with Blueprint-friendly playback, sizing, tint, variations, and events.</p>
+          </div>
+          <a class="button primary" href={url('/FlipbookWidget')}>Open</a>
         </div>
       </div>
     </section>

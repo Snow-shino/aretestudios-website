@@ -1,0 +1,44 @@
+---
+title: DayNight2D Getting Started
+description: Create settings, start world time, and bind Blueprint systems to DayNight2D events.
+---
+
+## Install
+
+1. Place `DayNight2D` in your project's `Plugins` folder.
+2. Enable the plugin in Unreal.
+3. Restart the editor if Unreal asks.
+
+## Create Time Settings
+
+1. Create a `DayNightTimeSettings` data asset.
+2. Configure `RealSecondsPerGameMinute`.
+3. Set the starting minute, hour, day, month, and year.
+4. Configure calendar length and day phase start hours.
+
+## Use The Time Subsystem
+
+DayNight2D uses `UDayNightTimeSubsystem` as the global source of truth.
+
+Blueprints can read:
+
+- Current time and date.
+- Weekday, month, season, year, day phase.
+- Total minutes, hours, and days passed.
+- Pause state through save/replication state.
+
+Blueprints can control:
+
+- Pause and resume.
+- Time speed.
+- Set time/date.
+- Advance minutes, hours, and days.
+- Skip to morning or a target hour.
+
+## First Blueprint Test
+
+1. In a Blueprint, get the world subsystem `DayNightTimeSubsystem`.
+2. Bind to `OnHourChanged`.
+3. Print `GetFormattedDateTime`.
+4. Call `SetTimeSpeed` to accelerate the test.
+5. Confirm output advances without per-frame Blueprint tick.

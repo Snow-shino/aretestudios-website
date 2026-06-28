@@ -1,0 +1,44 @@
+---
+title: DayNight2D Systems
+description: Schedules, routines, timed behaviors, visuals, multiplayer, save/load, and extensibility.
+---
+
+## Schedules
+
+Use `UDayNightScheduleAsset` and `FDayNightScheduleEntry` for reusable time windows.
+
+Entries can filter by weekdays, months, seasons, specific dates, gameplay tags, and time ranges.
+
+## Routines
+
+Use `UDayNightRoutineAsset` and `UDayNightRoutineComponent` for generic actor routines.
+
+Routines are not limited to NPCs. Use them for doors, platforms, shops, enemies, objects, environmental changes, or custom Blueprint events.
+
+## Timed Behaviors
+
+Use `UDayNightTimedBehaviorComponent` as the base component for objects that progress over game time.
+
+Derived components include:
+
+- `UDayNightTimedProgressComponent`
+- `UDayNightRespawnComponent`
+- `UDayNightAvailabilityComponent`
+
+## Visuals
+
+Visuals are optional. `UDayNightVisualProfile` exposes color pickers and brightness values for day, night, dawn, evening, and interiors.
+
+The visual components avoid forcing post process, dynamic lights, or 3D shadows.
+
+## Multiplayer
+
+`ADayNightTimeReplicator` provides server RPCs for time, date, speed, pause, advancing, and skipping to morning.
+
+Clients should use replicated state for UI and cosmetic interpolation.
+
+## Save/Load
+
+DayNight2D does not force a custom save system.
+
+Use `FDayNightTimeSaveData`, `GetTimeSaveData`, and `LoadTimeSaveData` with your own save pipeline.

@@ -1,0 +1,70 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
+---
+
+<SiteLayout
+  title="DayNight2D | Arete Plugins"
+  description="DayNight2D is a foundational Unreal Engine plugin for Blueprint-friendly world time, schedules, routines, timed behavior, day/night visuals, and multiplayer-aware timing."
+>
+  <main>
+    <section class="shell hero">
+      <div>
+        <p class="eyebrow">World timing foundation</p>
+        <h1>DayNight2D</h1>
+        <p class="lead">
+          DayNight2D provides reusable C++ and Blueprint systems for time, calendars, schedules,
+          routines, timed behavior, optional visual day/night presentation, save/load helpers,
+          and server-authoritative multiplayer time.
+        </p>
+        <div class="actions">
+          <a class="button primary" href={url('/docs/daynight2d')}>Read Docs</a>
+          <a class="button" href={url('/docs/daynight2d/getting-started')}>Getting Started</a>
+          <a class="button" href={url('/docs/daynight2d/qa-checklist')}>QA Checklist</a>
+          <a class="button" href="https://github.com/Snow-shino/DayNight2D">GitHub</a>
+        </div>
+      </div>
+      <article class="terminal-card">
+        <div class="terminal-header">
+          <span>daynight2d</span>
+          <span>runtime foundation</span>
+        </div>
+        <pre class="terminal-body"><code>Time subsystem
+  -> Calendar state
+  -> Schedule assets
+  -> Routine components
+  -> Timed behavior
+  -> Optional visuals
+  -> Replicated state</code></pre>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Reusable systems</p>
+            <h2>Not tied to farming, shops, or NPCs.</h2>
+          </div>
+          <p>Use the base classes to build growth, respawn, timed doors, enemy windows, festivals, crafting timers, puzzle timing, seasonal behavior, and project-specific systems.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>Blueprint-first</h3>
+            <p>Create child Blueprints from reusable components and bind to time, schedule, routine, and timed behavior events.</p>
+          </article>
+          <article class="card">
+            <h3>Optimized runtime</h3>
+            <p>The core clock uses timers and events instead of per-frame ticking. Components stay tick-disabled by default.</p>
+          </article>
+          <article class="card">
+            <h3>2D-friendly visuals</h3>
+            <p>Visuals are optional and do not force post process, dynamic lights, or 3D shadows.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+</SiteLayout>

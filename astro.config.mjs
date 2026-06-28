@@ -42,6 +42,16 @@ export default defineConfig({
             { label: 'QA Checklist', slug: 'docs/tileforge2d/post-push-qa-pages' },
           ],
         },
+        {
+          label: 'DayNight2D',
+          items: [
+            { label: 'Overview', slug: 'docs/daynight2d' },
+            { label: 'Getting Started', slug: 'docs/daynight2d/getting-started' },
+            { label: 'Blueprint API', slug: 'docs/daynight2d/blueprint-api' },
+            { label: 'Systems', slug: 'docs/daynight2d/systems' },
+            { label: 'QA Checklist', slug: 'docs/daynight2d/qa-checklist' },
+          ],
+        },
       ],
       head: [
         {

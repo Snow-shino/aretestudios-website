@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">DayNight2D mark</title>
+  <desc id="desc">A sun and moon mark for DayNight2D.</desc>
+  <rect width="128" height="128" rx="24" fill="#070b10"/>
+  <circle cx="48" cy="48" r="24" fill="#ffb347"/>
+  <path d="M92 30a33 33 0 1 0 0 66 27 27 0 1 1 0-66Z" fill="#86d5ff"/>
+  <path d="M20 88h88" stroke="#1dd6b8" stroke-width="8" stroke-linecap="round"/>
+</svg>

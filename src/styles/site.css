@@ -235,6 +235,37 @@ h3 {
   text-shadow: 0 0 16px rgba(255, 122, 26, 0.38);
 }
 
+.flipbook-neon {
+  color: #5dff75;
+  text-shadow:
+    0 0 8px rgba(93, 255, 117, 0.72),
+    0 0 22px rgba(93, 255, 117, 0.34);
+}
+
+.flipbook-page {
+  --accent: #5dff75;
+  --accent-2: #9cffaa;
+}
+
+.flipbook-page .button.primary {
+  color: #041408;
+  box-shadow: 0 0 28px rgba(93, 255, 117, 0.2);
+}
+
+.flipbook-page .terminal-card,
+.flipbook-page .card,
+.flipbook-page .plugin-row {
+  border-color: #244d2c;
+}
+
+.flipbook-page .terminal-body {
+  color: #caffd1;
+}
+
+.flipbook-page code {
+  color: #9cffaa;
+}
+
 .docs-panel {
   border: 1px solid var(--line);
   border-radius: 8px;

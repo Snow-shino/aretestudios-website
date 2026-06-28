@@ -1,0 +1,78 @@
+---
+title: DayNight2D Blueprint API
+description: Blueprint-facing DayNight2D functions, events, and components.
+---
+
+## Core Time Nodes
+
+- `GetCurrentMinute`
+- `GetCurrentHour`
+- `GetCurrentDay`
+- `GetCurrentWeekday`
+- `GetCurrentMonth`
+- `GetCurrentSeason`
+- `GetCurrentYear`
+- `GetCurrentDayPhase`
+- `GetTotalMinutesPassed`
+- `GetTotalHoursPassed`
+- `GetTotalDaysPassed`
+- `GetFormattedTime`
+- `GetFormattedDate`
+- `GetFormattedDateTime`
+
+## Query Nodes
+
+- `IsDaytime`
+- `IsNighttime`
+- `IsMorning`
+- `IsEvening`
+- `IsWeekend`
+- `IsWeekday`
+- `IsSeason`
+- `IsDayOfWeek`
+- `IsBetweenHours`
+- `IsBetweenDateTimes`
+- `HasDaysPassed`
+
+## Control Nodes
+
+- `PauseTime`
+- `ResumeTime`
+- `SetTimeSpeed`
+- `SetCurrentTime`
+- `SetCurrentDate`
+- `AdvanceMinutes`
+- `AdvanceHours`
+- `AdvanceDays`
+- `SkipToNextMorning`
+- `SkipToHour`
+
+## Events
+
+- `OnMinuteChanged`
+- `OnHourChanged`
+- `OnDayStarted`
+- `OnDayEnded`
+- `OnWeekChanged`
+- `OnMonthChanged`
+- `OnSeasonChanged`
+- `OnYearChanged`
+- `OnDayPhaseChanged`
+- `OnSpecificTimeReached`
+- `OnDateReached`
+- `OnTimeSpeedChanged`
+- `OnTimePaused`
+- `OnTimeResumed`
+
+## Console Commands
+
+- `DayNight.SetTime`
+- `DayNight.SetDate`
+- `DayNight.AdvanceMinutes`
+- `DayNight.AdvanceDays`
+- `DayNight.SetSpeed`
+- `DayNight.SetSeason`
+- `DayNight.Pause`
+- `DayNight.Resume`
+- `DayNight.PrintSchedules`
+- `DayNight.PrintRoutines`

@@ -1,0 +1,117 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
+---
+
+<SiteLayout
+  title="Arete Flipbook Widgets | Snowcrest Studios"
+  description="Display and control Paper2D flipbooks directly inside Unreal Engine UMG widgets."
+>
+  <main class="flipbook-page">
+    <section class="shell hero">
+      <div>
+        <p class="eyebrow">Paper2D animation for UMG</p>
+        <h1>Arete <span class="flipbook-neon">Flipbook</span> Widgets</h1>
+        <p class="lead">
+          A lightweight Unreal Engine C++ plugin for rendering and controlling standard
+          Paper2D Flipbooks directly inside UMG.
+        </p>
+        <div class="actions">
+          <a class="button primary" href={url('/FlipbookWidget/how-to')}>How To</a>
+          <a class="button" href={url('/FlipbookWidget/blueprint-api')}>Blueprint API</a>
+          <a class="button" href={url('/FlipbookWidget/troubleshooting')}>Troubleshooting</a>
+        </div>
+      </div>
+      <article class="terminal-card">
+        <div class="terminal-header">
+          <span>flipbook_widget</span>
+          <span>runtime + editor</span>
+        </div>
+        <pre class="terminal-body"><code>PaperFlipbook asset
+  -&gt; Arete Flipbook Widget
+  -&gt; Play / Pause / Restart
+  -&gt; Fit / Fill / Stretch
+  -&gt; Tint / Color Variations
+  -&gt; Blueprint Events</code></pre>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Why use it?</p>
+            <h2>Animated UI without frame-swapping hacks.</h2>
+          </div>
+          <p>Assign a normal PaperFlipbook, choose a playback mode, and control it from Blueprint.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>Native <span class="flipbook-neon">Flipbook</span> Playback</h3>
+            <p>Play Once, Loop, Ping Pong, Reverse, and Manual modes with real PaperFlipbook frame-run timing.</p>
+          </article>
+          <article class="card">
+            <h3>UMG-Friendly Sizing</h3>
+            <p>Use Original Size, Fit, Fill, Stretch, or Custom sizing with optional aspect-ratio preservation.</p>
+          </article>
+          <article class="card">
+            <h3>Blueprint Control</h3>
+            <p>Control playback, frames, position, tint, opacity, and color variations and respond to events.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Use cases</p>
+            <h2>One widget, many animated interfaces.</h2>
+          </div>
+        </div>
+        <ul class="pill-list">
+          <li>Inventory icons</li>
+          <li>Spell and ability icons</li>
+          <li>Dialogue portraits</li>
+          <li>Status effects</li>
+          <li>Loading indicators</li>
+          <li>Menu cursors</li>
+          <li>Animated buttons</li>
+          <li>HUD elements</li>
+          <li>Pixel-art UI</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Documentation</p>
+            <h2><span class="flipbook-neon">Flipbook</span>Widget guides.</h2>
+          </div>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>How To</h3>
+            <p>Install the plugin and build your first animated UMG widget.</p>
+            <p><a href={url('/FlipbookWidget/how-to')}>Open the setup guide</a></p>
+          </article>
+          <article class="card">
+            <h3>Blueprint API</h3>
+            <p>Review every callable function and assignable playback event.</p>
+            <p><a href={url('/FlipbookWidget/blueprint-api')}>Open the API guide</a></p>
+          </article>
+          <article class="card">
+            <h3>Troubleshooting</h3>
+            <p>Resolve palette, rendering, sizing, color, and playback issues.</p>
+            <p><a href={url('/FlipbookWidget/troubleshooting')}>Open troubleshooting</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+</SiteLayout>

@@ -1,0 +1,71 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
+---
+
+<SiteLayout
+  title="FlipbookWidget Troubleshooting | Snowcrest Studios"
+  description="Troubleshoot Arete Flipbook Widgets setup, rendering, sizing, color, and playback."
+>
+  <main class="flipbook-page">
+    <section class="shell hero">
+      <div>
+        <p class="eyebrow">Support guide</p>
+        <h1><span class="flipbook-neon">Flipbook</span>Widget Troubleshooting</h1>
+        <p class="lead">Quick checks for the most common plugin, UMG, playback, and appearance issues.</p>
+        <div class="actions">
+          <a class="button primary" href={url('/FlipbookWidget/how-to')}>How To</a>
+          <a class="button" href={url('/FlipbookWidget/blueprint-api')}>Blueprint API</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="grid two">
+          <article class="card">
+            <h2>The widget is missing from the Palette</h2>
+            <p>Enable Paper2D and Arete Flipbook Widgets, restart the editor, and search for <strong>Arete Flipbook Widget</strong>.</p>
+          </article>
+          <article class="card">
+            <h2>Nothing is displayed</h2>
+            <p>Assign a valid PaperFlipbook, confirm its keyframes reference PaperSprites, give the widget non-zero layout space, and check parent visibility.</p>
+          </article>
+          <article class="card">
+            <h2>Play does nothing</h2>
+            <p>Manual mode intentionally disables automatic playback. Choose Play Once, Loop, or Ping Pong.</p>
+          </article>
+          <article class="card">
+            <h2>The image is cropped</h2>
+            <p>Use Fit to keep the whole frame visible. Fill intentionally fills the available space and can crop one axis.</p>
+          </article>
+          <article class="card">
+            <h2>Color looks unexpected</h2>
+            <p>The active color variation multiplies Color and Opacity. Set Active Color Variation Index to -1 to use only the base color.</p>
+          </article>
+          <article class="card">
+            <h2>Wrong-engine warning</h2>
+            <p>Install the package matching your Unreal Engine version. The plugin descriptor must match the engine package selected on Fab.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head"><div><p class="eyebrow">Support request</p><h2>What to include.</h2></div></div>
+        <div class="card">
+          <ul>
+            <li>Unreal Engine and plugin versions.</li>
+            <li>Playback and stretch modes.</li>
+            <li>Whether the issue occurs in editor, PIE, or a packaged build.</li>
+            <li>A screenshot of the widget Details panel.</li>
+            <li>A minimal PaperFlipbook that reproduces the issue, when possible.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+</SiteLayout>

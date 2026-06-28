@@ -1,0 +1,105 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
+---
+
+<SiteLayout
+  title="FlipbookWidget How To | Snowcrest Studios"
+  description="Install Arete Flipbook Widgets and display a Paper2D Flipbook in UMG."
+>
+  <main class="flipbook-page">
+    <section class="shell hero">
+      <div>
+        <p class="eyebrow">Setup guide</p>
+        <h1><span class="flipbook-neon">Flipbook</span>Widget How To</h1>
+        <p class="lead">Install the plugin, add the widget to UMG, and control your first animated UI element.</p>
+        <div class="actions">
+          <a class="button primary" href={url('/FlipbookWidget')}>Overview</a>
+          <a class="button" href={url('/FlipbookWidget/blueprint-api')}>Blueprint API</a>
+        </div>
+      </div>
+      <article class="terminal-card">
+        <div class="terminal-header"><span>quick_start</span><span>UE 5.5 / 5.8</span></div>
+        <pre class="terminal-body"><code>Enable Paper2D
+Enable Arete Flipbook Widgets
+Open a Widget Blueprint
+Add Arete Flipbook Widget
+Assign a PaperFlipbook
+Compile and Play</code></pre>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head"><div><p class="eyebrow">01</p><h2>Install the plugin.</h2></div></div>
+        <div class="card">
+          <ol>
+            <li>Close Unreal Editor.</li>
+            <li>Copy <code>AreteFlipbookWidgets</code> into your project's <code>Plugins</code> directory.</li>
+            <li>Open the project and compile the source plugin if Unreal prompts you.</li>
+            <li>Open <strong>Edit → Plugins</strong> and enable <strong>Arete Flipbook Widgets</strong>.</li>
+            <li>Confirm the built-in <strong>Paper2D</strong> plugin is enabled, then restart the editor.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head"><div><p class="eyebrow">02</p><h2>Add the <span class="flipbook-neon">Flipbook</span> widget.</h2></div></div>
+        <div class="card">
+          <ol>
+            <li>Open or create a Widget Blueprint.</li>
+            <li>Search the UMG Palette for <strong>Arete Flipbook Widget</strong> under the <strong>Arete</strong> category.</li>
+            <li>Drag it into the widget hierarchy.</li>
+            <li>Assign a PaperFlipbook in the <strong>Arete Flipbook</strong> Details category.</li>
+            <li>Give the widget non-zero layout space and compile the Widget Blueprint.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head"><div><p class="eyebrow">03</p><h2>Choose playback behavior.</h2></div></div>
+        <div class="grid two">
+          <article class="card"><h3>Play Once</h3><p>Plays to the appropriate end and fires <code>OnPlaybackFinished</code>.</p></article>
+          <article class="card"><h3>Loop</h3><p>Wraps continuously and fires <code>OnLoopCompleted</code> after each cycle.</p></article>
+          <article class="card"><h3>Ping Pong</h3><p>Alternates direction and completes a loop after a round trip.</p></article>
+          <article class="card"><h3>Manual</h3><p>Disables automatic advancement for frame-driven or position-driven UI.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head"><div><p class="eyebrow">04</p><h2>Choose a sizing mode.</h2></div></div>
+        <div class="card">
+          <ul>
+            <li><strong>Original Size:</strong> uses the current PaperSprite's pixel dimensions.</li>
+            <li><strong>Fit:</strong> keeps the entire frame visible.</li>
+            <li><strong>Fill:</strong> fills the available area and can crop one axis.</li>
+            <li><strong>Stretch:</strong> fills the area without preserving aspect ratio.</li>
+            <li><strong>Custom:</strong> draws at Desired Size, centered in the allotted space.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head"><div><p class="eyebrow">05</p><h2>Control it from Blueprint.</h2></div></div>
+        <div class="card">
+          <p>
+            Mark the widget as a variable, drag its reference into the graph, and call functions such as
+            <code>Set Flipbook</code>, <code>Play</code>, <code>Restart</code>, <code>Set Tint</code>, or
+            <code>Set Color Variation by Index</code>.
+          </p>
+          <p><a href={url('/FlipbookWidget/blueprint-api')}>Review the complete Blueprint API</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+</SiteLayout>

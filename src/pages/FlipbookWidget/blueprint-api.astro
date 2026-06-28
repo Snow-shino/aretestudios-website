@@ -1,0 +1,92 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
+
+const groups = [
+  {
+    title: 'Asset & Playback',
+    functions: [
+      ['Set Flipbook / Get Flipbook', 'Assign or retrieve the PaperFlipbook asset.'],
+      ['Play', 'Start or resume automatic playback. Manual mode intentionally ignores Play.'],
+      ['Pause', 'Pause at the current playback position.'],
+      ['Stop', 'Stop and reset to the direction-appropriate end.'],
+      ['Restart', 'Reset and begin playback again.'],
+      ['Is Playing', 'Return whether automatic playback is active.'],
+      ['Set Playback Speed / Get Playback Speed', 'Set or read the non-negative playback multiplier.'],
+      ['Set Looping', 'Switch between Loop and Play Once behavior.'],
+      ['Set Reverse Playback', 'Change playback direction.'],
+      ['Set Playback Position / Get Playback Position', 'Set or read time in seconds.'],
+      ['Set Frame Index / Get Frame Index', 'Set or read the current PaperFlipbook keyframe index.'],
+    ],
+  },
+  {
+    title: 'Sizing & Appearance',
+    functions: [
+      ['Set Desired Size', 'Set the Custom size and desired layout size.'],
+      ['Set Preserve Aspect Ratio', 'Enable or disable proportional Fit and Fill behavior.'],
+      ['Set Tint', 'Set RGB tint while preserving current opacity.'],
+      ['Set Opacity', 'Set alpha while preserving current RGB tint.'],
+      ['Set Color Variation by Index', 'Select one variation from Color Variations.'],
+      ['Randomize Color Variation', 'Choose a random configured color variation.'],
+    ],
+  },
+];
+---
+
+<SiteLayout
+  title="FlipbookWidget Blueprint API | Snowcrest Studios"
+  description="Blueprint functions and events exposed by Arete Flipbook Widgets."
+>
+  <main class="flipbook-page">
+    <section class="shell hero">
+      <div>
+        <p class="eyebrow">Blueprint reference</p>
+        <h1><span class="flipbook-neon">Flipbook</span>Widget API</h1>
+        <p class="lead">Playback, frame, sizing, appearance, variation, and event controls for animated UMG.</p>
+        <div class="actions">
+          <a class="button primary" href={url('/FlipbookWidget/how-to')}>How To</a>
+          <a class="button" href={url('/FlipbookWidget/troubleshooting')}>Troubleshooting</a>
+        </div>
+      </div>
+      <article class="terminal-card">
+        <div class="terminal-header"><span>blueprint_api</span><span>runtime</span></div>
+        <pre class="terminal-body"><code>Widget Reference
+  -&gt; Set Flipbook
+  -&gt; Set Playback Speed
+  -&gt; Play
+
+On Frame Changed
+  -&gt; Update dependent UI</code></pre>
+      </article>
+    </section>
+
+    {groups.map((group) => (
+      <section class="section">
+        <div class="shell">
+          <div class="section-head"><div><p class="eyebrow">Functions</p><h2>{group.title}</h2></div></div>
+          <div class="grid two">
+            {group.functions.map(([name, description]) => (
+              <article class="card"><h3>{name}</h3><p>{description}</p></article>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head"><div><p class="eyebrow">Assignable delegates</p><h2>Blueprint Events</h2></div></div>
+        <div class="grid">
+          <article class="card"><h3>Playback Started</h3><p>Broadcast when playback begins.</p></article>
+          <article class="card"><h3>Playback Paused</h3><p>Broadcast when active playback is paused.</p></article>
+          <article class="card"><h3>Playback Stopped</h3><p>Broadcast when active playback is stopped.</p></article>
+          <article class="card"><h3>Playback Finished</h3><p>Broadcast when Play Once reaches its terminal position.</p></article>
+          <article class="card"><h3>Frame Changed</h3><p>Broadcast with the new PaperFlipbook keyframe index.</p></article>
+          <article class="card"><h3>Loop Completed</h3><p>Broadcast after a loop or Ping Pong round trip.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+</SiteLayout>

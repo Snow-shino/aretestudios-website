@@ -1,0 +1,40 @@
+---
+title: DayNight2D QA Checklist
+description: Current QA checklist for DayNight2D runtime foundation, rename, and tick optimization.
+---
+
+## Current Verification
+
+- UE 5.7 Win64 plugin build must pass.
+- Confirm no subsystem or component uses per-frame tick for time progression.
+- Confirm runtime modules load after the DayNight2D rename.
+- Confirm Blueprint class names and categories use DayNight2D.
+
+## Blueprint Tests
+
+- Time getters.
+- Formatting helpers.
+- Date and season queries.
+- Pause/resume/speed.
+- Advance and skip controls.
+- Schedule, routine, timed behavior, save/load, and replication nodes.
+
+## Visual Tests
+
+- Visual profile color pickers.
+- Optional overlay/tint/interior workflows.
+- Unlit sprite-friendly materials.
+- No forced post process or dynamic lighting.
+
+## Multiplayer Tests
+
+- Server RPCs.
+- Replicated state.
+- Day and season multicast events.
+- Sleep vote component.
+
+## Known Gaps
+
+- Example maps are not created yet.
+- UMG debug widget layout is not created yet.
+- Multiplayer PIE validation is still required.
