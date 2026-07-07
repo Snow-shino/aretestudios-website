@@ -1,445 +1,100 @@
-﻿---
+---
 title: Ase2UE Documentation
-description: Complete guide for installing Ase2UE, importing Aseprite files, generating Paper2D assets, using Grid and Auto extraction, creating flipbooks, sockets, hitboxes, hurtboxes, and troubleshooting.
+description: Simple guide for installing Ase2UE, importing Aseprite files, generating Paper2D sprites and flipbooks, using Grid mode, and creating sockets from marker layers.
 ---
 
-Ase2UE is an Unreal Engine editor plugin for bringing Aseprite art into Paper2D projects.
+Ase2UE imports saved Aseprite files into Unreal Engine Paper2D projects.
 
-Save an `.ase` or `.aseprite` file, click `Import Now` in Unreal, and Ase2UE creates or updates the generated texture, sprites, flipbooks, and optional sprite sockets.
+Click **Import Now** and Ase2UE can create:
 
-## Keywords
+- A spritesheet texture
+- PaperSprite assets
+- PaperFlipbooks from Aseprite tags
+- PaperSprite sockets from marker layers
 
-Aseprite, Unreal Engine, UE5, Paper2D, PaperSprite, PaperFlipbook, 2D game, pixel art, sprite import, spritesheet, sockets, marker layers, hit boxes, hurt boxes, reimport, editor plugin.
+Ase2UE is an editor tool. It does not import files at runtime.
 
-## What The Plugin Does
+## Start Here
 
-Ase2UE helps with the repetitive setup work between Aseprite and Unreal.
-
-It can:
-
-- Export an Aseprite file through the local Aseprite command-line tool.
-- Import the exported spritesheet as a texture.
-- Create PaperSprite assets from the exported frame data.
-- Create PaperFlipbook assets from Aseprite animation tags.
-- Read special marker layers and turn 1x1 pixels into PaperSprite sockets.
-- Update the same generated assets on reimport instead of creating duplicate files.
-- Optionally create an advanced hitbox data asset for Blueprint workflows.
-
-Ase2UE is an editor-time tool. It does not import Aseprite files at runtime.
-
-## Requirements
-
-- Unreal Engine 5 project.
-- Paper2D plugin enabled.
-- Aseprite installed on the same machine.
-- A saved `.ase` or `.aseprite` file.
-
-## Quick Start
-
-1. Enable the Ase2UE plugin.
-2. Restart Unreal if prompted.
-3. Enable Paper2D if it is not already enabled.
-4. Open `Project Settings > Plugins > Ase2UE`.
-5. Set `Aseprite Executable Path` if Ase2UE does not find Aseprite automatically.
-6. In the Content Browser, create an `Ase2 Source` asset.
-7. Open the `Ase2 Source` asset.
-8. Set `Aseprite File` to your `.ase` or `.aseprite` file.
-9. Set `Import Destination` to a folder under `/Game`.
-10. Choose your sprite settings.
-11. Click `Import Now`.
-
-Common Windows Aseprite paths:
+Most users should use this setup:
 
 ```text
-C:/Program Files/Aseprite/Aseprite.exe
-C:/Program Files (x86)/Steam/steamapps/common/Aseprite/Aseprite.exe
+Sprite Extraction: Grid
+Grid Cell Width: your Aseprite canvas width
+Grid Cell Height: your Aseprite canvas height
 ```
-
-## Basic Workflow
-
-```text
-Aseprite file
--> Ase2 Source asset
--> Import Now
--> generated texture, sprites, flipbooks, and sockets
-```
-
-After the first import, the normal workflow is:
-
-1. Edit the art in Aseprite.
-2. Save the file.
-3. Go back to Unreal.
-4. Click `Import Now`.
-
-Ase2UE updates the existing generated assets in place.
-
-## Generated Folder Layout
-
-If the source file is named `Player.aseprite`, and the import destination is `/Game/Sprites`, Ase2UE creates a layout like this:
-
-```text
-/Game/Sprites/Player/
-  Textures/
-    T_Player_Sheet
-  Sprites/
-    SP_Player_0000
-    SP_Player_0001
-    SP_Player_0002
-  Flipbooks/
-    FB_Player_Idle
-    FB_Player_Run
-    FB_Player_Attack
-  Data/
-    DA_Player_Hitboxes
-```
-
-The `Data` folder only appears when advanced hitbox data generation is enabled.
-
-## Ase2 Source Settings
-
-### Aseprite File
-
-The `.ase` or `.aseprite` file to import.
-
-If the file picker does not show your file, switch the picker to all files or paste the full path.
-
-### Import Destination
-
-The Unreal content folder where generated assets are created.
-
-Use a folder under `/Game`, for example:
-
-```text
-/Game/Sprites/Hero
-```
-
-### Pivot Mode
-
-The PaperSprite pivot mode applied to generated sprites.
-
-Useful defaults:
-
-- `Center Center` for characters that rotate or flip around the middle.
-- `Bottom Center` for grounded characters.
-
-### Default Material
-
-The material applied to generated sprites.
-
-The default is Paper2D's masked lit sprite material. You can change it to an unlit Paper2D material if your project does not use sprite lighting.
-
-## Sprite Extraction
-
-Ase2UE has two sprite extraction modes.
-
-### Grid
-
-Grid mode cuts the generated spritesheet into fixed-size cells.
-
-Use Grid when:
-
-- Every frame has the same canvas size.
-- You want the cleanest socket marker workflow.
-- You want predictable sprite bounds.
-- Your Aseprite file uses a fixed character canvas, such as `80x80`.
 
 Example:
 
 ```text
-Sprite Extraction: Grid
-Grid Cell Width: 80
-Grid Cell Height: 80
+Aseprite canvas: 384 x 224
+Grid Cell Width: 384
+Grid Cell Height: 224
 ```
 
-For sockets, set the grid cell width and height to the Aseprite canvas size.
+Use Grid mode for characters, animations, and sockets.
 
-### Auto From Aseprite JSON
+## Quick Import Steps
 
-Auto mode reads frame rectangles from Aseprite's exported JSON.
+1. Enable **Paper2D**.
+2. Enable **Ase2UE**.
+3. Set your Aseprite path in `Project Settings > Plugins > Ase2UE` if needed.
+4. Create an **Ase2 Source** asset.
+5. Pick your `.ase` or `.aseprite` file.
+6. Pick an import folder under `/Game`.
+7. Use **Grid** and set the grid size to your canvas size.
+8. Click **Import Now**.
 
-Use Auto when:
+## Reimport Workflow
 
-- Your frames are packed or trimmed.
-- You do not need exact marker-pixel-to-canvas socket placement.
-- You want Aseprite's exported frame data to decide each sprite rectangle.
+1. Edit your art in Aseprite.
+2. Save the file.
+3. Return to Unreal.
+4. Click **Import Now** again.
 
-If sockets look offset in Auto mode, use Grid mode and set the grid size to the source canvas size.
+Ase2UE updates the same generated assets in place.
 
-## Flipbooks From Tags
+## Sockets From Marker Layers
 
-Ase2UE can create PaperFlipbooks from Aseprite frame tags.
+To create a socket:
 
-Example Aseprite tags:
+1. Add a new layer in Aseprite.
+2. Name it `SOCKET_Hand`, `SOCKET_WeaponTip`, or another `SOCKET_` name.
+3. Put one visible 1x1 pixel where the socket should be.
+4. Save and reimport.
+
+The marker pixel color does not matter. It only needs to be visible and not transparent.
+
+## Useful Pages
+
+- [Getting Started](./getting-started/)
+- [Importing](./importing/)
+- [Hitboxes, Hurtboxes, and Sockets](./hitboxes-hurtboxes-sockets/)
+- [FAQ](./faq/)
+- [Changelog](./changelog/)
+
+## Adding Screenshots
+
+Put documentation images in:
 
 ```text
-Idle
-Run
-Attack
-Jump
+public/images/ase2ue/
 ```
 
-Each tag becomes a flipbook:
+Then reference them from a docs page like this:
 
-```text
-FB_Player_Idle
-FB_Player_Run
-FB_Player_Attack
-FB_Player_Jump
-```
-
-### Use Aseprite Frame Durations
-
-When this is enabled, Ase2UE uses the frame timing from Aseprite.
-
-When this is disabled, Ase2UE uses the `Flipbook Frames Per Second` value on the `Ase2 Source` asset.
-
-## Marker Layers And Sprite Sockets
-
-Ase2UE can read special marker layers from Aseprite.
-
-Marker layers are hidden from the main generated texture. Ase2UE exports them separately, reads their visible pixels, and uses them as gameplay helper points.
-
-### Socket Marker Layers
-
-To create a PaperSprite socket:
-
-1. Create a new layer in Aseprite.
-2. Name it with a supported prefix.
-3. Place one visible 1x1 pixel where the socket should be.
-4. Save the file.
-5. Click `Import Now` in Unreal.
-
-Supported layer names:
-
-```text
-SOCKET_Hand
-SOCKET_WeaponTip
-HIT_WeaponStart
-HIT_WeaponTip
-HURT_Body
-```
-
-Ase2UE writes matching sockets onto the generated PaperSprites.
-
-### Does Marker Color Matter?
-
-No. Marker color does not matter.
-
-Ase2UE reads visible non-transparent pixels. Red, green, blue, white, and other colors all work.
-
-What matters:
-
-- The layer name starts with `SOCKET`, `HIT`, or `HURT`.
-- The marker pixel is visible.
-- The marker pixel is not fully transparent.
-- The marker is on the correct animation frame.
-- A 1x1 marker is used for point-style sockets.
-
-## Weapon Trace Example
-
-For a melee weapon trace, create two 1x1 marker layers:
-
-```text
-HIT_WeaponStart
-HIT_WeaponTip
-```
-
-After import, each generated sprite can have both sockets.
-
-In Blueprint or C++, get both socket locations from the PaperSprite or PaperFlipbook component and use them as the trace start and trace end.
-
-## Advanced Hitbox Data Asset
-
-The default workflow is socket-first.
-
-For most users, PaperSprite sockets are enough for weapon points, hand points, and simple trace positions.
-
-If you want Blueprint-readable HIT/HURT/SOCKET data grouped by animation frame, enable:
-
-```text
-Generate Hitbox Data Asset
-```
-
-This creates a data asset named like:
-
-```text
-DA_Player_Hitboxes
-```
-
-Use this only if you need custom Blueprint logic that reads imported marker or slice data directly.
-
-## Import Report
-
-After import, Ase2UE shows a report.
-
-The report is organized into:
-
-- `What was done`: successful work, such as imported markers or applied sockets.
-- `Notes`: helpful information that is not a problem.
-- `Warnings`: things that need attention, such as marker layers with no visible pixels.
-
-Warnings are not used for normal successful import details.
-
-## Reimport Safety
-
-Ase2UE uses stable generated names so repeated imports update the same assets.
-
-This helps avoid duplicate assets such as:
-
-```text
-SP_Player_0000
-SP_Player_0000_1
-SP_Player_0000_2
-```
-
-Expected behavior:
-
-1. Import once.
-2. Edit and save the Aseprite file.
-3. Import again.
-4. Existing generated assets update in place.
-
-## Troubleshooting
-
-### Aseprite executable was not found
-
-Open:
-
-```text
-Project Settings > Plugins > Ase2UE
-```
-
-Set `Aseprite Executable Path` to your local `Aseprite.exe`.
-
-### The file picker does not show `.ase` or `.aseprite`
-
-Switch the picker to all files or paste the full file path.
-
-### Import destination is invalid
-
-Use a folder under `/Game`.
-
-Good:
-
-```text
-/Game/Sprites/Hero
-```
-
-Not good:
-
-```text
-C:/Art/Hero
-```
-
-### Sockets do not appear
-
-Check:
-
-- `Import Marker Layers` is enabled.
-- The marker layer name starts with `SOCKET`, `HIT`, or `HURT`.
-- The marker pixel is visible.
-- The marker pixel is not transparent.
-- The marker exists on the correct frame.
-- You used a 1x1 marker for a point/socket.
-- You used Grid mode if you need exact canvas placement.
-
-### Socket position looks offset
-
-PaperSprite sockets are stored in pivot-space, not Aseprite canvas coordinates.
-
-For an `80x80` sprite using `Center Center` pivot:
-
-```text
-Aseprite pixel: 29, 40
-Pivot: 40, 40
-PaperSprite socket transform: X=-11, Y=0, Z=0
-```
-
-That is expected.
-
-### Sockets are easier in Grid mode
-
-For socket marker workflows, use:
-
-```text
-Sprite Extraction: Grid
-Grid Cell Width: your canvas width
-Grid Cell Height: your canvas height
-```
-
-If your Aseprite canvas is `80x80`, use:
-
-```text
-Grid Cell Width: 80
-Grid Cell Height: 80
-```
-
-### Flipbooks were not created
-
-Check:
-
-- `Create Flipbooks From Tags` is enabled.
-- The Aseprite file has frame tags.
-- The tags have clear names such as `Idle`, `Run`, or `Attack`.
-
-### The generated sprite texture includes marker pixels
-
-Marker layers with names starting with `SOCKET`, `HIT`, or `HURT` should be hidden from the main generated texture.
-
-If marker pixels appear in the texture:
-
-- Check the marker layer name.
-- Make sure the marker layer was detected.
-- Reimport after saving the Aseprite file.
-
-## Recommended Naming
-
-Use clear names that describe the animation or gameplay point.
-
-Animation tags:
-
-```text
-Idle
-Run
-Attack
-Jump
-Fall
-```
-
-Socket marker layers:
-
-```text
-SOCKET_Hand
-SOCKET_Foot
-SOCKET_WeaponTip
-HIT_WeaponStart
-HIT_WeaponTip
-HURT_Body
+```md
+![Ase2 Source settings](../../images/ase2ue/ase2-source-settings.png)
 ```
 
 ## What Ase2UE Does Not Do
 
 Ase2UE does not:
 
-- Build a combat system.
-- Apply damage.
-- Spawn weapons.
-- Create animation state machines.
-- Import files at runtime.
-- Replace Paper2D.
+- Include Aseprite
+- Import files at runtime
+- Create gameplay, combat, or animation Blueprint logic
+- Watch files live in the background
+- Replace Aseprite
 
-Ase2UE focuses on editor-side asset generation for Paper2D projects.
-
-## Support Checklist
-
-When asking for help, include:
-
-- Unreal Engine version.
-- Aseprite version.
-- Ase2UE version.
-- Whether you used Grid or Auto extraction.
-- Grid cell size if using Grid.
-- A screenshot of the `Ase2 Source` settings.
-- A screenshot of marker layers in Aseprite.
-- The import report text if there was a warning or error.
-
+It focuses on making Aseprite-to-Paper2D asset importing faster and easier to repeat.

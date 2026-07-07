@@ -3,6 +3,25 @@ title: Changelog
 description: Release notes for Ase2UE.
 ---
 
+## 1.0.1
+
+### Fixed
+
+- Fixed Grid imports for long or large animations.
+- Ase2UE now constrains Grid spritesheets into rows instead of allowing one extremely long single-row texture.
+- Grid sprite generation now stops at the exported Aseprite frame count.
+
+### Recommended Import Setup
+
+Use Grid mode and set the grid size to your Aseprite canvas size.
+
+```text
+Aseprite canvas: 384 x 224
+Sprite Extraction: Grid
+Grid Cell Width: 384
+Grid Cell Height: 224
+```
+
 ## 1.0.0
 
 Initial release.
@@ -20,11 +39,4 @@ Initial release.
 - PaperSprite socket writing from 1x1 marker pixels.
 - Optional advanced hitbox data asset.
 - Stable reimport behavior for generated assets.
-- Import report sections for **What was done**, **Notes**, and **Warnings**.
-
-### Requirements
-
-- Unreal Engine 5.
-- Paper2D enabled.
-- Aseprite installed locally.
-
+- Import report sections for successful actions, notes, and warnings.

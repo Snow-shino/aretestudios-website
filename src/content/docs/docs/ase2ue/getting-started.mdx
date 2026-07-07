@@ -3,31 +3,32 @@ title: Getting Started
 description: Install Ase2UE, enable Paper2D, set the Aseprite path, and import your first Aseprite file.
 ---
 
-Ase2UE is an Unreal Engine editor plugin for bringing Aseprite art into Paper2D projects.
+Ase2UE is an Unreal Engine editor plugin for importing Aseprite art into Paper2D.
 
-It creates generated assets in the editor. It is not a runtime importer.
+It creates Unreal assets in the editor. It is not a runtime importer.
 
 ## Requirements
 
-- Unreal Engine 5 project
+- Unreal Engine 5.5, 5.6, 5.7, or 5.8
 - Paper2D enabled
 - Aseprite installed locally
 - A saved `.ase` or `.aseprite` file
 
-## Enable The Plugin
+## Install
 
-1. Open your Unreal project.
-2. Open **Edit → Plugins**.
-3. Enable **Paper2D**.
-4. Enable **Ase2UE**.
-5. Restart Unreal if prompted.
+1. Add the `Ase2UE` plugin folder to your project's `Plugins` folder.
+2. Open your Unreal project.
+3. Open **Edit > Plugins**.
+4. Enable **Paper2D**.
+5. Enable **Ase2UE**.
+6. Restart Unreal if prompted.
 
 ## Set The Aseprite Path
 
 Open:
 
 ```text
-Project Settings → Plugins → Ase2UE
+Project Settings > Plugins > Ase2UE
 ```
 
 Set **Aseprite Executable Path** if Ase2UE does not find Aseprite automatically.
@@ -45,12 +46,22 @@ C:/Program Files (x86)/Steam/steamapps/common/Aseprite/Aseprite.exe
 2. Open the **Ase2 Source** asset.
 3. Set **Aseprite File** to your `.ase` or `.aseprite` file.
 4. Set **Import Destination** to a folder under `/Game`.
-5. Choose **Grid** or **Auto from Aseprite JSON**.
-6. Click **Import Now**.
+5. Use **Sprite Extraction: Grid** for most character, animation, and socket workflows.
+6. Set **Grid Cell Width** and **Grid Cell Height** to your Aseprite canvas size.
+7. Click **Import Now**.
+
+Example:
+
+```text
+Aseprite canvas: 384 x 224
+Sprite Extraction: Grid
+Grid Cell Width: 384
+Grid Cell Height: 224
+```
 
 ## What Gets Created
 
-For a source file named `Player.aseprite`, Ase2UE creates a folder like this:
+For `Player.aseprite`, Ase2UE creates assets like:
 
 ```text
 /Game/YourFolder/Player/
@@ -59,9 +70,9 @@ For a source file named `Player.aseprite`, Ase2UE creates a folder like this:
   Flipbooks/FB_Player_Idle
 ```
 
-The exact assets depend on your source file, tags, and settings.
+The exact assets depend on your file, tags, and settings.
 
-## Normal Reimport Workflow
+## Reimport
 
 1. Edit your file in Aseprite.
 2. Save the file.
@@ -69,4 +80,3 @@ The exact assets depend on your source file, tags, and settings.
 4. Click **Import Now** again.
 
 Ase2UE updates the same generated assets in place.
-

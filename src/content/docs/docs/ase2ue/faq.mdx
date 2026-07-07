@@ -9,43 +9,58 @@ No. Ase2UE is an editor plugin. It creates and updates Unreal assets inside the 
 
 ## Does Ase2UE require Paper2D?
 
-Yes. Ase2UE generates Paper2D assets such as PaperSprites and PaperFlipbooks.
+Yes. Ase2UE creates PaperSprites and PaperFlipbooks.
 
-## Does Ase2UE require Aseprite?
+## Does Ase2UE include Aseprite?
 
-Yes. Ase2UE uses the local Aseprite command-line exporter.
+No. Aseprite is not included.
 
-## The Aseprite executable was not found. What do I do?
+Ase2UE uses your local Aseprite installation to export temporary PNG and JSON files during import.
+
+## Aseprite was not found. What do I do?
 
 Open:
 
 ```text
-Project Settings → Plugins → Ase2UE
+Project Settings > Plugins > Ase2UE
 ```
 
 Set **Aseprite Executable Path** to your local `Aseprite.exe`.
 
-## The file picker does not show my `.aseprite` file.
+## My imported texture is one extremely long row.
 
-Switch the file picker to all files or paste the full path into the field.
+Update to the newest Ase2UE build.
+
+Then use Grid mode and set the grid size to your Aseprite canvas size.
+
+Example:
+
+```text
+Aseprite canvas: 384 x 224
+Sprite Extraction: Grid
+Grid Cell Width: 384
+Grid Cell Height: 224
+```
 
 ## My sockets do not appear.
 
 Check:
 
 - **Import Marker Layers** is enabled.
-- The marker layer name starts with `SOCKET`, `HIT`, or `HURT`.
+- The layer name starts with `SOCKET`, `HIT`, or `HURT`.
 - The marker pixel is visible.
 - The marker pixel is not transparent.
 - The marker exists on the correct frame.
-- The marker is 1x1 for point-style sockets.
-- Grid mode is used for exact canvas placement.
+- Use a 1x1 marker for point-style sockets.
+- Use Grid mode for exact placement.
 
 ## My socket position looks offset.
 
-PaperSprite sockets are stored relative to the sprite pivot.
+Unreal stores PaperSprite sockets relative to the sprite pivot.
 
-If your Aseprite pixel is `29, 40` on an `80x80` sprite with a centered pivot, the socket transform will not also be `29, 40`. It will be offset from the pivot.
+Aseprite shows pixel coordinates from the top-left of the canvas.
+
+The numbers can look different, but the socket should visually line up on the sprite.
 
 ## Flipbooks were not created.
 
@@ -53,11 +68,11 @@ Check:
 
 - **Create Flipbooks From Tags** is enabled.
 - Your Aseprite file has frame tags.
-- The tags have clear names such as `Idle`, `Run`, or `Attack`.
+- Tags have clear names such as `Idle`, `Run`, or `Attack`.
 
 ## Marker pixels appear in the generated texture.
 
-Marker layers should be named with supported prefixes:
+Use supported layer prefixes:
 
 ```text
 SOCKET_Hand
@@ -77,6 +92,5 @@ Include:
 - Grid or Auto extraction mode
 - Grid cell size if using Grid
 - Screenshot of Ase2 Source settings
-- Screenshot of Aseprite layers/tags
-- Import report text if there was a warning or error
-
+- Screenshot of Aseprite layers and tags
+- Import report text
