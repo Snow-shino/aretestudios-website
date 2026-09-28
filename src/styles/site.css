@@ -730,3 +730,24 @@ h3 {
     grid-template-columns: 32px minmax(0, 1fr);
   }
 }
+
+
+/* Arete2D Suite */
+.suite-link, .suite-accent { color: #ff8a24; text-shadow: 0 0 10px rgba(255,138,36,.7), 0 0 28px rgba(255,138,36,.3); }
+.arete2d-page { --accent: #ff8a24; --accent-2: #ffb15f; }
+.arete2d-page .button.primary { color: #1b0b00; box-shadow: 0 0 30px rgba(255,138,36,.2); }
+.arete2d-page .terminal-card, .arete2d-page .card { border-color: #51301a; }
+.arete2d-page .terminal-body { color: #ffd2aa; }
+.suite-plugin-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.suite-plugin-card { position: relative; overflow: hidden; border: 1px solid color-mix(in srgb,var(--plugin-color) 38%,#242424); border-radius: 8px; background: linear-gradient(145deg,color-mix(in srgb,var(--plugin-color) 7%,#111112),#111112 58%); padding: 22px; }
+.suite-plugin-card::before { content:""; position:absolute; inset:0 auto 0 0; width:3px; background:var(--plugin-color); box-shadow:0 0 18px var(--plugin-color); }
+.suite-plugin-card h3 { color:var(--plugin-color); font-size:1.5rem; text-shadow:0 0 16px color-mix(in srgb,var(--plugin-color) 45%,transparent); }
+.suite-plugin-card p { color:var(--muted); }
+.suite-plugin-label { margin:0 0 8px; color:var(--plugin-color)!important; font:.75rem/1.2 "Cascadia Mono",Consolas,monospace; letter-spacing:.12em; text-transform:uppercase; }
+.design-hero { padding:100px 0 72px; max-width:900px; }
+.roadmap-list { display:grid; gap:10px; }
+.roadmap-list article { display:grid; grid-template-columns:54px minmax(0,1fr); gap:14px; border:1px solid #3d2b1e; border-radius:8px; background:var(--panel); padding:18px; }
+.roadmap-list article>span { color:var(--accent-2); font:.82rem/1.2 "Cascadia Mono",Consolas,monospace; }
+.roadmap-list h3 { margin-bottom:5px; }
+.roadmap-list p { margin:0; color:var(--muted); }
+@media (max-width:860px) { .suite-plugin-grid { grid-template-columns:1fr; } }
