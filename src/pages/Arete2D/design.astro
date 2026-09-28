@@ -1,0 +1,57 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
+---
+
+<SiteLayout title="Arete2D Suite Design Doc | Arête Studios" description="Concise product design and development plan for Arete2D Suite.">
+  <main class="arete2d-page">
+    <section class="shell design-hero">
+      <p class="eyebrow">Arete2D Suite · Design Doc</p>
+      <h1>Make 2D Unreal development feel <span class="suite-accent">easy.</span></h1>
+      <p class="lead">Arete2D is a modular 2D/2.5D framework for Unreal Engine. It removes repetitive infrastructure while leaving the game, art and design in the developer's hands.</p>
+      <div class="actions"><a class="button primary" href={url('/Arete2D')}>Suite Overview</a></div>
+    </section>
+
+    <section class="section"><div class="shell">
+      <div class="section-head"><div><p class="eyebrow">Product principles</p><h2>Workflow quality is a feature.</h2></div></div>
+      <div class="grid">
+        <article class="card"><h3>Simple by default</h3><p>Great defaults, safe inference, previews, one-click common actions and useful human-readable validation.</p></article>
+        <article class="card"><h3>Power when needed</h3><p>Progressive complexity with clean Blueprint and C++ escape hatches. Simplification must never become restriction.</p></article>
+        <article class="card"><h3>Modular by design</h3><p>Plugins remain independently installable and communicate through deliberate public contracts rather than hidden coupling.</p></article>
+      </div>
+    </div></section>
+
+    <section class="section"><div class="shell">
+      <div class="section-head"><div><p class="eyebrow">Core workflow</p><h2>From art to playable game with less friction.</h2></div></div>
+      <article class="terminal-card"><pre class="terminal-body"><code>Aseprite
+  -&gt; Ase2UE import / reimport
+  -&gt; AreSprite animation
+  -&gt; Are2DEditor worlds
+  -&gt; Interaction + Inventory + Ability
+  -&gt; DiaQuest narrative + world state
+  -&gt; Save + UI
+  -&gt; production QA + examples
+  -&gt; ship</code></pre></article>
+    </div></section>
+
+    <section class="section"><div class="shell">
+      <div class="section-head"><div><p class="eyebrow">Roadmap</p><h2>Development order.</h2></div><p>Every major system is dogfooded in Red Forest before being treated as production-ready.</p></div>
+      <div class="roadmap-list">
+        <article><span>01</span><div><h3>AreSprite + Ase2UE</h3><p>Prove the complete Aseprite → animation → runtime → reimport loop and replace PaperZD.</p></div></article>
+        <article><span>02</span><div><h3>Are2DEditor</h3><p>Build fast 2D and HD-2D world-authoring workflows.</p></div></article>
+        <article><span>03</span><div><h3>AreAbility</h3><p>Make production GAS workflows approachable for 2D games.</p></div></article>
+        <article><span>04</span><div><h3>Interaction + Inventory</h3><p>Reusable gameplay objects, items, containers and equipment.</p></div></article>
+        <article><span>05</span><div><h3>AreteDiaQuest</h3><p>Dialogue, branching choices, quests, objectives and shared world state.</p></div></article>
+        <article><span>06</span><div><h3>Save + UI + integration</h3><p>Versioned persistence, presentation adapters and clean cross-plugin workflows.</p></div></article>
+        <article><span>07</span><div><h3>Hardening</h3><p>Regression, multiplayer, migration, performance, package and first-time-user testing.</p></div></article>
+        <article><span>08</span><div><h3>Examples + launch</h3><p>Templates and documentation built only from proven, stable primitives.</p></div></article>
+      </div>
+    </div></section>
+
+    <section class="section"><div class="shell">
+      <div class="section-head"><div><p class="eyebrow">The question</p><h2>How many annoying steps can we eliminate?</h2></div><p>Without taking control away from the developer.</p></div>
+    </div></section>
+  </main>
+</SiteLayout>
