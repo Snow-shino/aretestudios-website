@@ -1,0 +1,107 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const url = (path: string) => `${base}${path.replace(/^\//, '')}`;
+
+const modules = [
+  ['AreSprite', 'Animation', '#ff9d2e', 'A complete 2D animation workflow built on Ase2UE: sets, sequences, directional playback, state machines, notifies, montages, layers and production tooling.'],
+  ['Ase2UE', 'Import', '#20e8d2', 'Aseprite-to-Unreal import and safe reimport for sprites, timing, tags, markers, sockets and generated Paper2D assets.'],
+  ['Are2DEditor', 'Worlds', '#b8ff38', 'Unreal-native 2D and HD-2D world authoring: tiles, grids, elevation, cliffs, paths, collision, sorting and environment workflows.'],
+  ['AreteDiaQuest', 'Narrative', '#ff4fa3', 'Dialogue, choices, conditions, quests, objectives, speakers, portraits, variables, events and world-state authoring.'],
+  ['AreAbility', 'Gameplay', '#a875ff', 'A friendlier, genre-neutral layer over Unreal GAS for abilities, attributes, effects, cooldowns, tags, costs and networking.'],
+  ['AreInteraction', 'Interaction', '#35d8ff', 'Reusable interactions, prompts, requirements, hold actions, events and multiplayer-aware authority.'],
+  ['AreInventory', 'Items', '#ffd43b', 'Items, inventories, containers, equipment, stacks, transfers and flexible world representations.'],
+  ['AreSave', 'Persistence', '#5b8cff', 'Versioned persistence for player, quest, inventory and world state with migration-friendly contracts.'],
+  ['AreUI', 'Interface', '#ff6b62', 'Reusable 2D UI foundations and adapters that keep presentation separate from authoritative gameplay state.'],
+  ['Flipbook Widgets', 'UMG', '#5dff75', 'Paper2D Flipbooks directly in UMG for portraits, inventory icons, HUD animation and menus.'],
+];
+---
+
+<SiteLayout
+  title="Arete2D Suite | Arête Studios"
+  description="A modular 2D/2.5D game development suite for Unreal Engine."
+>
+  <main class="arete2d-page">
+    <section class="shell hero">
+      <div>
+        <p class="eyebrow">Arête Studios · Unreal Engine</p>
+        <h1>Arete<span class="suite-accent">2D</span> Suite</h1>
+        <p class="lead">
+          A modular 2D/2.5D game-development suite for Unreal Engine. Build animation, worlds,
+          gameplay systems and narrative without rebuilding the foundations every project needs.
+        </p>
+        <div class="actions">
+          <a class="button primary" href={url('/Arete2D/design')}>Design Doc</a>
+          <a class="button" href="#plugins">Explore Plugins</a>
+        </div>
+      </div>
+      <article class="terminal-card">
+        <div class="terminal-header"><span>arete2d</span><span>modular suite</span></div>
+        <pre class="terminal-body"><code>Import art
+  -&gt; animate characters
+  -&gt; build worlds
+  -&gt; author dialogue + quests
+  -&gt; add gameplay systems
+  -&gt; ship your game</code></pre>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">North star</p>
+            <h2>Complex implementation. Simple authoring.</h2>
+          </div>
+          <p>
+            Arete2D is designed to make 2D development in Unreal feel discoverable and fast without
+            taking control away from experienced Blueprint and C++ developers.
+          </p>
+        </div>
+        <div class="grid">
+          <article class="card"><h3>Great defaults</h3><p>Infer the common case, explain gaps clearly, and keep advanced controls available when needed.</p></article>
+          <article class="card"><h3>Unreal-native</h3><p>Familiar Details panels, graphs, timelines, Content Browser behavior, undo/redo and searchable workflows.</p></article>
+          <article class="card"><h3>Production-minded</h3><p>Standalone modules, clean boundaries, versioned data, validation, testing and multiplayer-aware architecture.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="plugins">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">The suite</p>
+            <h2>Use one plugin or build with the whole family.</h2>
+          </div>
+          <p>Each subsystem keeps its own identity and color while sharing the same workflow-first philosophy.</p>
+        </div>
+        <div class="suite-plugin-grid">
+          {modules.map(([name, label, color, description]) => (
+            <article class="suite-plugin-card" style={`--plugin-color: ${color}`}>
+              <p class="suite-plugin-label">{label}</p>
+              <h3>{name}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Development plan</p>
+            <h2>Build the foundations, prove them in a real game.</h2>
+          </div>
+          <p>AreSprite + Ase2UE come first, followed by world authoring, gameplay foundations, narrative, integration and production hardening.</p>
+        </div>
+        <div class="actions">
+          <a class="button primary" href={url('/Arete2D/design')}>Read the concise design doc</a>
+          <a class="button" href={url('/FlipbookWidget')}>Current Flipbook Widget docs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</SiteLayout>
